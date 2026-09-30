@@ -1,0 +1,1195 @@
+<title>Acta Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: a white ruled "ledger" (1240px column, hairline rails, full-bleed rules, hatch bands);
+   product mocks are dark rounded workspaces; violet glow marks AI output only.
+   Token values mirror design-system/acta/tokens.css. */
+:root {
+  --violet-100:#F4EFFF; --violet-200:#E7DCFD; --violet-300:#D3BCFB; --violet-400:#B78AF7;
+  --violet-600:#723AC5; --violet-700:#5E2BAA; --violet-800:#4E2290; --violet-900:#1D1432; --violet-950:#120B20;
+
+  --bg:#FFFFFF; --bg-tint:#F4EFFF;
+  --text:#120B20; --text-sub:#4A4458; --text-soft:#6E6880;
+  --primary:#723AC5; --primary-hover:#5E2BAA; --primary-active:#4E2290; --on-primary:#FFFFFF;
+  --primary-tint:#F4EFFF;
+  --border:#E7E1F2; --border-strong:#D3BCFB; --rail:rgba(18,11,32,.07); --focus:#723AC5;
+  --header-bg:rgba(255,255,255,.8);
+  --logo-mark:#723AC5; --logo-text:#120B20;
+
+  --ws-bg:#120B20; --ws-card:#1D1432; --ws-text:#F4EFFF; --ws-sub:#B8B0CC; --ws-soft:#8D84A3;
+  --ws-border:rgba(183,138,247,.16); --ai:#B78AF7;
+  --card:#FFFFFF; --card-border:#E7E1F2; --card-sub:#F7F5FB; --bubble:#120B20; --on-bubble:#FFFFFF;
+  --card-shadow:0 4px 8px rgba(18,11,32,.06), 0 2px 4px rgba(18,11,32,.04), 0 1px 2px rgba(18,11,32,.04), 0 0 0 1px rgba(18,11,32,.04), inset 0 -.5px .5px rgba(18,11,32,.08), inset 0 -1px .5px rgba(18,11,32,.06);
+  --tag-dec:#723AC5; --tag-blk:#B42318; --tag-nxt:#1B7F4B;
+  --success:#1B7F4B; --success-ws:#5FD39A; --error:#B42318; --error-ws:#FF8A80;
+
+  --font-sans:'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono:'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --t-display:clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem);
+  --t-h2:clamp(2rem, 1.5rem + 2vw, 3.25rem);
+  --t-h3:clamp(1.375rem, 1.2rem + .6vw, 1.75rem);
+
+  --gutter:20px; --container:1240px;
+  --r-sm:8px; --r-md:12px; --r-lg:20px; --r-pill:9999px;
+  --shadow-ws:0 24px 48px -12px rgba(18,11,32,.28), 0 8px 16px -4px rgba(18,11,32,.12), 0 0 0 1px rgba(18,11,32,.08);
+  --shadow-ai:0 0 0 1px rgba(114,58,197,.20), 0 4px 8px rgba(114,58,197,.06), 0 12px 28px -14px rgba(114,58,197,.30);
+  --shadow-pop:0 16px 40px -8px rgba(18,11,32,.22), 0 0 0 1px var(--border);
+  --ring:0 0 0 2px var(--bg), 0 0 0 4px var(--focus);
+
+  --dur-instant:120ms; --dur-fast:180ms; --dur-base:280ms; --dur-slow:480ms;
+  --ease-out:cubic-bezier(.16,1,.3,1); --ease-in-out:cubic-bezier(.65,0,.35,1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:#120B20; --bg-tint:#1D1432;
+    --text:#F4EFFF; --text-sub:#B8B0CC; --text-soft:#8D84A3;
+    --primary:#B78AF7; --primary-hover:#D3BCFB; --primary-active:#E7DCFD; --on-primary:#120B20;
+    --primary-tint:rgba(183,138,247,.12);
+    --border:rgba(183,138,247,.14); --border-strong:rgba(183,138,247,.32); --rail:rgba(183,138,247,.10); --focus:#B78AF7;
+    --header-bg:rgba(18,11,32,.78); --logo-mark:#B78AF7;
+    --card:#1D1432; --card-border:rgba(183,138,247,.16); --card-sub:#170F28; --bubble:#3B2A63; --on-bubble:#F4EFFF;
+    --card-shadow:0 12px 28px -12px rgba(0,0,0,.55), 0 0 0 1px rgba(183,138,247,.10);
+    --shadow-ai:0 0 0 1px rgba(183,138,247,.36), 0 16px 32px -18px rgba(183,138,247,.5);
+    --tag-dec:#B78AF7; --tag-blk:#FF8A80; --tag-nxt:#5FD39A; --logo-text:#F4EFFF; --ws-bg:#0C0716;
+    --shadow-ws:0 24px 64px -16px rgba(0,0,0,.6), 0 0 0 1px rgba(183,138,247,.14);
+    --shadow-pop:0 16px 40px -8px rgba(0,0,0,.5), 0 0 0 1px rgba(183,138,247,.14);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:#120B20; --bg-tint:#1D1432;
+  --text:#F4EFFF; --text-sub:#B8B0CC; --text-soft:#8D84A3;
+  --primary:#B78AF7; --primary-hover:#D3BCFB; --primary-active:#E7DCFD; --on-primary:#120B20;
+  --primary-tint:rgba(183,138,247,.12);
+  --border:rgba(183,138,247,.14); --border-strong:rgba(183,138,247,.32); --rail:rgba(183,138,247,.10); --focus:#B78AF7;
+  --header-bg:rgba(18,11,32,.78); --logo-mark:#B78AF7;
+    --card:#1D1432; --card-border:rgba(183,138,247,.16); --card-sub:#170F28; --bubble:#3B2A63; --on-bubble:#F4EFFF;
+    --card-shadow:0 12px 28px -12px rgba(0,0,0,.55), 0 0 0 1px rgba(183,138,247,.10);
+    --shadow-ai:0 0 0 1px rgba(183,138,247,.36), 0 16px 32px -18px rgba(183,138,247,.5);
+    --tag-dec:#B78AF7; --tag-blk:#FF8A80; --tag-nxt:#5FD39A; --logo-text:#F4EFFF; --ws-bg:#0C0716;
+  --shadow-ws:0 24px 64px -16px rgba(0,0,0,.6), 0 0 0 1px rgba(183,138,247,.14);
+  --shadow-pop:0 16px 40px -8px rgba(0,0,0,.5), 0 0 0 1px rgba(183,138,247,.14);
+  color-scheme:dark;
+}
+@media (min-width:768px){ :root{ --gutter:36px; } }
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; scroll-padding-top:88px; }
+body{ background:var(--bg); color:var(--text); font-family:var(--font-sans); font-size:16px; line-height:1.625;
+  -webkit-font-smoothing:antialiased; overflow-x:clip; }
+h1,h2,h3,h4,h5,p{ margin:0; }
+h1,h2,h3,h4,h5{ text-wrap:balance; font-weight:600; }
+p{ text-wrap:pretty; }
+a{ color:inherit; }
+:focus-visible{ outline:none; box-shadow:var(--ring); border-radius:6px; }
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.i{ width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+.i-fill{ fill:currentColor; stroke:none; }
+.mono{ font-family:var(--font-mono); }
+.tnum{ font-variant-numeric:tabular-nums; }
+
+/* ---------- Ledger frame ---------- */
+.ledger{ max-width:var(--container); margin-inline:auto; border-inline:1px solid var(--rail); }
+.sec{ position:relative; }
+.sec::before{ content:""; position:absolute; top:0; left:50%; width:100vw; transform:translateX(-50%); border-top:1px solid var(--rail); pointer-events:none; }
+.sec::after{ content:""; position:absolute; top:-5px; left:-6px; right:-6px; height:11px; pointer-events:none;
+  --m:var(--border-strong);
+  background:
+    linear-gradient(var(--m),var(--m)) left 0 top 5px / 11px 1px no-repeat,
+    linear-gradient(var(--m),var(--m)) left 5px top 0 / 1px 11px no-repeat,
+    linear-gradient(var(--m),var(--m)) right 0 top 5px / 11px 1px no-repeat,
+    linear-gradient(var(--m),var(--m)) right 5px top 0 / 1px 11px no-repeat; }
+.hatch{ height:48px; border-top:1px solid var(--rail);
+  background:repeating-linear-gradient(315deg, var(--rail) 0 1px, transparent 1px 8px); }
+.intro{ padding:clamp(56px, 8vw, 96px) var(--gutter) clamp(40px, 5vw, 56px); display:grid; gap:16px; max-width:880px; }
+.eyebrow{ font-family:var(--font-mono); font-size:12px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--primary);
+  display:inline-flex; align-items:center; gap:10px; line-height:1; }
+.eyebrow::before{ content:""; width:6px; height:6px; background:currentColor; }
+.h2{ font-size:var(--t-h2); line-height:1.12; letter-spacing:-.025em; }
+.lead{ font-size:1.25rem; line-height:1.5; letter-spacing:-.01em; color:var(--text-sub); max-width:40rem; }
+.cells{ display:grid; border-top:1px solid var(--rail); }
+.cells > *{ min-width:0; }
+.cell{ padding:32px var(--gutter); border-bottom:1px solid var(--rail); }
+.cell:last-child{ border-bottom:0; }
+@media (min-width:768px){
+  .cells.c2{ grid-template-columns:1fr 1fr; }
+  .cells.c3{ grid-template-columns:repeat(3,1fr); }
+  .cells.c2 > .cell, .cells.c3 > .cell{ border-bottom:0; border-right:1px solid var(--rail); }
+  .cells.c2 > .cell:nth-child(2n), .cells.c3 > .cell:nth-child(3n){ border-right:0; }
+  .cells.c2 > .cell:nth-child(n+3), .cells.c3 > .cell:nth-child(n+4){ border-top:1px solid var(--rail); }
+  .cell{ padding:40px 36px; }
+}
+.cell-label{ font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-soft); margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+.note{ font-size:14px; color:var(--text-soft); line-height:1.5; }
+
+/* ---------- Header ---------- */
+.site-head{ position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:var(--header-bg);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--rail); }
+.site-head .in{ max-width:var(--container); margin-inline:auto; border-inline:1px solid var(--rail); height:72px; padding-inline:var(--gutter);
+  display:flex; align-items:center; gap:28px; }
+.logo{ display:block; height:24px; width:auto; }
+.navlinks{ display:none; gap:4px; margin-right:auto; }
+.navlinks a{ text-decoration:none; font-size:15px; font-weight:500; color:var(--text-sub); padding:0 14px; height:40px; display:inline-flex; align-items:center; border-radius:var(--r-pill);
+  transition:background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
+.navlinks a:hover{ background:var(--bg-tint); color:var(--text); }
+@media (min-width:1000px){ .navlinks{ display:flex; } }
+.head-spacer{ margin-left:auto; }
+@media (min-width:1000px){ .head-spacer{ display:none; } }
+.icon-btn{ width:44px; height:44px; display:inline-grid; place-items:center; border-radius:var(--r-pill); border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer;
+  transition:background var(--dur-fast) var(--ease-out); }
+.icon-btn:hover{ background:var(--bg-tint); }
+.icon-btn .i{ width:18px; height:18px; }
+
+/* ---------- Buttons ---------- */
+.btn{ --h:44px; font:500 15px/1 var(--font-sans); letter-spacing:-.005em; height:var(--h); padding:0 20px; border-radius:var(--r-pill);
+  display:inline-flex; align-items:center; justify-content:center; gap:8px; border:1px solid transparent; cursor:pointer; text-decoration:none; white-space:nowrap;
+  transition:background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), transform var(--dur-instant) var(--ease-out); }
+.btn .i{ transition:transform var(--dur-fast) var(--ease-out); }
+.btn:hover .i-arrow, .btn.is-hover .i-arrow{ transform:translateX(2px); }
+.btn:active, .btn.is-active{ transform:scale(.98); }
+.btn-lg{ --h:52px; padding:0 28px; }
+.btn-primary{ background:var(--primary); color:var(--on-primary); }
+.btn-primary:hover, .btn-primary.is-hover{ background:var(--primary-hover); }
+.btn-primary:active, .btn-primary.is-active{ background:var(--primary-active); }
+.btn-secondary{ background:transparent; color:var(--text); border-color:var(--border); }
+.btn-secondary:hover, .btn-secondary.is-hover{ background:var(--bg-tint); border-color:var(--border-strong); }
+.btn-ghost{ background:transparent; color:var(--text); padding:0 12px; }
+.btn-ghost:hover, .btn-ghost.is-hover{ color:var(--primary); }
+.btn.is-focus{ box-shadow:var(--ring); }
+.btn[disabled]{ opacity:.4; cursor:not-allowed; transform:none; }
+.btn.is-loading{ cursor:progress; }
+.spin{ width:16px; height:16px; border-radius:50%; border:2px solid currentColor; border-right-color:transparent; animation:spin .8s linear infinite; }
+@keyframes spin{ to{ transform:rotate(360deg); } }
+.btn-inverse{ background:#FFFFFF; color:#5E2BAA; }
+.btn-inverse:hover{ background:#F4EFFF; }
+
+.state-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(170px,1fr)); gap:24px 16px; }
+.state{ display:grid; gap:10px; justify-items:start; }
+.state > span{ font-family:var(--font-mono); font-size:11px; color:var(--text-soft); letter-spacing:.04em; }
+
+/* ---------- Tags ---------- */
+.tag{ height:28px; padding:0 12px; border-radius:var(--r-pill); background:var(--primary-tint); color:var(--primary); font-size:13px; font-weight:500;
+  display:inline-flex; align-items:center; gap:6px; white-space:nowrap; }
+.mtag{ height:22px; padding:0 8px; border-radius:var(--r-sm); font-family:var(--font-mono); font-size:11px; letter-spacing:.02em; display:inline-flex; align-items:center; gap:5px; white-space:nowrap;
+  background:rgba(183,138,247,.10); color:var(--ws-sub); border:1px solid var(--ws-border); }
+.mtag.ai{ color:var(--ai); border-color:rgba(183,138,247,.5); box-shadow:0 0 12px -4px rgba(183,138,247,.6); }
+.mtag.ok{ color:var(--success-ws); border-color:rgba(95,211,154,.35); background:rgba(95,211,154,.08); }
+.mtag.block{ color:var(--error-ws); border-color:rgba(255,138,128,.35); background:rgba(255,138,128,.08); }
+.mtag.decision{ color:var(--violet-300); }
+.row-wrap{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+.ws-swatch{ background:var(--ws-bg); border-radius:var(--r-md); padding:16px; }
+
+/* ---------- Inputs ---------- */
+.field{ display:grid; gap:8px; }
+.field label{ font-size:14px; font-weight:500; color:var(--text); }
+.email{ display:flex; align-items:center; gap:6px; height:56px; padding:4px 4px 4px 20px; border-radius:var(--r-pill); border:1px solid var(--border); background:var(--bg);
+  transition:border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); max-width:460px; width:100%; }
+.email input{ flex:1; min-width:0; border:0; background:transparent; font:400 15px var(--font-sans); color:var(--text); outline:none; height:100%; }
+.email input::placeholder{ color:var(--text-soft); }
+.email:focus-within, .email.is-focus{ border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-tint); }
+.email.is-error{ border-color:var(--error); }
+.email .btn{ --h:46px; padding:0 20px; }
+.msg{ font-size:14px; display:flex; gap:6px; align-items:center; }
+.msg.err{ color:var(--error); }
+.msg.ok{ color:var(--success); }
+:root[data-theme="dark"] .msg.ok{ color:var(--success-ws); }
+:root[data-theme="dark"] .msg.err, :root[data-theme="dark"] .email.is-error{ color:var(--error-ws); border-color:var(--error-ws); }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .msg.ok{ color:var(--success-ws); }
+  :root:not([data-theme="light"]) .msg.err, :root:not([data-theme="light"]) .email.is-error{ color:var(--error-ws); border-color:var(--error-ws); }
+}
+.email.is-error input{ color:var(--text); }
+@media (max-width:480px){
+  .email{ flex-direction:column; height:auto; border-radius:28px; padding:6px; align-items:stretch; }
+  .email input{ height:44px; padding-inline:14px; }
+}
+
+/* ---------- Color ---------- */
+.scale{ display:grid; grid-template-columns:repeat(auto-fill, minmax(100px,1fr)); border-top:1px solid var(--rail); border-left:1px solid var(--rail); }
+.sw{ display:grid; grid-template-rows:88px auto; border-right:1px solid var(--rail); border-bottom:1px solid var(--rail); }
+.sw .chip{ position:relative; }
+.sw .chip b{ position:absolute; left:8px; top:8px; font:500 10px var(--font-mono); letter-spacing:.06em; padding:2px 6px; border-radius:4px; background:rgba(255,255,255,.88); color:#120B20; }
+.sw .meta{ padding:10px 10px 12px; display:grid; gap:2px; }
+.sw .meta strong{ font-size:13px; font-weight:600; }
+.sw .meta span{ font:400 11px var(--font-mono); color:var(--text-soft); }
+.tok-table{ width:100%; border-collapse:collapse; font-size:14px; }
+.tok-table th{ text-align:left; font:500 11px var(--font-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--text-soft); padding:10px 12px; border-bottom:1px solid var(--border); white-space:nowrap; }
+.tok-table td{ padding:10px 12px; border-bottom:1px solid var(--rail); vertical-align:middle; }
+.tok-table code{ font:400 12.5px var(--font-mono); color:var(--text); white-space:nowrap; }
+.dot{ width:20px; height:20px; border-radius:6px; display:inline-block; vertical-align:middle; box-shadow:inset 0 0 0 1px rgba(128,110,160,.35); margin-right:8px; }
+.tw{ overflow-x:auto; }
+.pass{ font:500 11px var(--font-mono); padding:2px 8px; border-radius:var(--r-pill); background:var(--primary-tint); color:var(--primary); white-space:nowrap; }
+.pair{ height:40px; min-width:120px; border-radius:8px; display:inline-flex; align-items:center; padding:0 14px; font-size:15px; font-weight:500; box-shadow:inset 0 0 0 1px rgba(128,110,160,.25); white-space:nowrap; }
+
+/* ---------- Type ---------- */
+.spec-row{ display:grid; gap:12px; padding:28px 0; border-bottom:1px solid var(--rail); }
+.spec-row:first-child{ padding-top:0; }
+.spec-row:last-child{ border-bottom:0; padding-bottom:0; }
+@media (min-width:900px){ .spec-row{ grid-template-columns:200px 1fr; gap:32px; align-items:baseline; } }
+.spec-meta{ font:400 12px/1.6 var(--font-mono); color:var(--text-soft); }
+.spec-meta b{ display:block; color:var(--primary); font-weight:500; letter-spacing:.04em; }
+.s-display{ font-size:var(--t-display); line-height:1.04; letter-spacing:-.035em; font-weight:600; }
+.s-h2{ font-size:var(--t-h2); line-height:1.12; letter-spacing:-.025em; font-weight:600; }
+.s-h3{ font-size:var(--t-h3); line-height:1.2; letter-spacing:-.02em; font-weight:600; }
+.s-lead{ font-size:20px; line-height:1.5; letter-spacing:-.01em; color:var(--text-sub); max-width:36rem; }
+.s-body{ font-size:16px; line-height:1.625; color:var(--text-sub); max-width:34rem; }
+.s-ui{ font-size:15px; font-weight:500; letter-spacing:-.005em; }
+.s-small{ font-size:14px; color:var(--text-soft); }
+.s-step{ font:500 14px var(--font-mono); letter-spacing:.04em; color:var(--primary); }
+.s-micro{ font:400 11px var(--font-mono); letter-spacing:.02em; color:var(--text-soft); }
+.s-price{ font-size:48px; font-weight:600; letter-spacing:-.03em; line-height:1; }
+.fam .big{ font-size:clamp(64px, 9vw, 120px); line-height:1; letter-spacing:-.04em; font-weight:600; }
+.fam .big.m{ font-family:var(--font-mono); font-weight:400; letter-spacing:-.02em; }
+.fam .chars{ font-size:15px; color:var(--text-sub); margin-top:14px; overflow-wrap:anywhere; }
+
+/* ---------- Foundations ---------- */
+.space-list{ display:grid; gap:10px; }
+.space-row{ display:grid; grid-template-columns:48px 1fr; align-items:center; gap:12px; font:400 12px var(--font-mono); color:var(--text-soft); }
+.space-row i{ display:block; height:12px; background:var(--primary); border-radius:2px; max-width:100%; }
+.rad-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(120px,1fr)); gap:16px; }
+.rad{ display:grid; gap:10px; align-content:start; }
+.rad div{ height:88px; background:var(--bg-tint); border:1px solid var(--border-strong); }
+.rad span{ font:400 12px/1.5 var(--font-mono); color:var(--text-soft); }
+.elev-grid{ display:grid; gap:20px; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); }
+.elev{ height:120px; border-radius:var(--r-lg); display:grid; place-items:end start; padding:14px; font:400 12px/1.4 var(--font-mono); }
+.motion-row{ display:grid; gap:10px; }
+.track{ position:relative; height:36px; border-radius:var(--r-pill); background:var(--bg-tint); overflow:hidden; }
+.track i{ position:absolute; left:4px; top:4px; width:28px; height:28px; border-radius:50%; background:var(--primary); }
+.motion-row.play .track i{ animation:slide var(--d) var(--e) both; }
+@keyframes slide{ from{ transform:translateX(0); } to{ transform:translateX(var(--w, 260px)); } }
+.mlabel{ display:flex; justify-content:space-between; font:400 12px var(--font-mono); color:var(--text-soft); gap:12px; flex-wrap:wrap; }
+
+/* ---------- Product cards (mocks) ----------
+   Mapped 1:1 from nick-analysis/design.md: card-app (white, 1px border, 20px radius, stacked soft shadow,
+   icon + title + meta-pill header), chat-bubble (you = ink bubble right with avatar, agent = bordered bubble left
+   Chat/Agent segmented pills. Only the brand changes: violet replaces blue/green. */
+.card{ background:var(--card); border:1px solid var(--card-border); border-radius:var(--r-lg); box-shadow:var(--card-shadow); overflow:hidden; text-align:left; font-size:14px; line-height:1.5; color:var(--text); }
+.card.ai{ box-shadow:var(--shadow-ai); }
+.card-head{ display:flex; align-items:center; gap:10px; padding:14px 16px; border-bottom:1px solid var(--card-border); min-width:0; }
+.card-head > .i{ width:16px; height:16px; color:var(--text-sub); }
+.card.ai .card-head > .i{ color:var(--primary); }
+.card-title{ font-size:15px; font-weight:600; letter-spacing:-.01em; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.meta{ margin-left:auto; height:26px; padding:0 10px; border-radius:var(--r-pill); border:1px solid var(--card-border); display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--text-sub); white-space:nowrap; flex:none; }
+.meta .i{ width:13px; height:13px; }
+.card-body{ padding:16px; display:grid; gap:12px; }
+.card-foot{ padding:12px 16px; border-top:1px solid var(--card-border); display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+
+/* avatars */
+.av{ width:32px; height:32px; border-radius:50%; display:inline-grid; place-items:center; flex:none; position:relative;
+  font:600 12px/1 var(--font-sans); color:#F4EFFF; background:linear-gradient(150deg, var(--a1, #7B5BD0), var(--a2, #33205A));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18); }
+.av.p1{ --a1:#7B5BD0; --a2:#33205A; } .av.p2{ --a1:#5A4A8A; --a2:#221A3A; }
+.av.p3{ --a1:#9A77E6; --a2:#4A2A8A; } .av.p4{ --a1:#4B3C74; --a2:#1B1430; }
+.av.sm{ width:22px; height:22px; font-size:9px; }
+.bot-av{ width:36px; height:36px; border-radius:50%; border:1px solid var(--card-border); background:var(--card); display:grid; place-items:center; color:var(--primary); flex:none; }
+.bot-av .i{ width:16px; height:16px; }
+
+/* chat bubbles */
+.chat{ display:grid; gap:14px; }
+.row{ display:flex; gap:10px; align-items:flex-end; min-width:0; }
+.row.me{ justify-content:flex-end; }
+.row > div{ min-width:0; display:grid; gap:4px; }
+.row.me > div{ justify-items:end; }
+.who{ font-size:12px; color:var(--text-soft); padding-inline:4px; }
+.bub{ max-width:34ch; padding:12px 16px; border-radius:var(--r-md); font-size:14px; line-height:1.5; }
+.row.me .bub{ background:var(--bubble); color:var(--on-bubble); font-weight:500; }
+.row.bot .bub{ background:var(--card); color:var(--text-sub); border:1px solid var(--card-border); font-size:15px; }
+.row.me .hl{ background-image:linear-gradient(var(--violet-300),var(--violet-300)); }
+.hl{ background-image:linear-gradient(var(--primary),var(--primary)); background-size:100% 2px; background-position:0 100%; background-repeat:no-repeat; padding-bottom:1px; }
+.mention{ font-weight:600; color:var(--violet-300); }
+
+.typing{ display:inline-flex; gap:4px; padding:14px 16px; border-radius:var(--r-md); border:1px solid var(--card-border); background:var(--card); }
+.typing i{ width:6px; height:6px; border-radius:50%; background:var(--text-soft); opacity:.55; }
+
+/* tool-call row */
+.tool{ display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:var(--r-sm); background:var(--card-sub); font-size:13px; color:var(--text-sub); min-width:0; }
+.tool > .i{ width:15px; height:15px; color:var(--text-soft); }
+.tool span{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.tool .ok{ margin-left:auto; color:var(--tag-nxt); }
+
+/* micro-tags: uppercase mono colour text, no boxes */
+.mt{ font:600 10px/1.9 var(--font-mono); letter-spacing:.08em; text-transform:uppercase; }
+.mt.dec{ color:var(--tag-dec); } .mt.blk{ color:var(--tag-blk); } .mt.nxt{ color:var(--tag-nxt); }
+.sum{ list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+.sum li{ display:grid; grid-template-columns:76px minmax(0,1fr); gap:12px; align-items:baseline; font-size:14px; color:var(--text-sub); }
+.sum li span:last-child{ color:var(--text); }
+
+/* in-app actions + segmented pills */
+.app-btn{ height:32px; padding:0 14px; border-radius:var(--r-pill); display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; background:var(--primary); color:var(--on-primary); white-space:nowrap; }
+.app-btn.ghost{ background:transparent; color:var(--text-sub); font-weight:500; padding:0 10px; }
+.app-btn .i{ width:14px; height:14px; }
+.seg{ display:inline-flex; gap:2px; padding:3px; border-radius:var(--r-pill); background:var(--card-sub); }
+.seg span{ height:26px; padding:0 10px; border-radius:var(--r-pill); display:inline-flex; align-items:center; font-size:12px; font-weight:550; color:var(--text-sub); }
+.seg .on{ background:var(--primary-tint); color:var(--primary); }
+.foot-right{ margin-left:auto; display:flex; gap:6px; align-items:center; }
+
+/* calendar */
+.week{ display:grid; grid-template-columns:repeat(5,1fr); border:1px solid var(--card-border); border-radius:var(--r-md); overflow:hidden; }
+.week > div{ border-right:1px solid var(--card-border); min-height:96px; padding:8px 6px; display:grid; align-content:start; gap:6px; min-width:0; }
+.week > div:last-child{ border-right:0; }
+.week .d{ font:500 10.5px var(--font-mono); letter-spacing:.06em; color:var(--text-soft); text-transform:uppercase; }
+.week .d.now{ color:var(--primary); }
+.evt{ border-radius:var(--r-sm); background:var(--primary-tint); border-left:3px solid var(--primary); padding:6px 7px; font-size:11.5px; line-height:1.35; color:var(--text); min-width:0; overflow-wrap:anywhere; font-weight:500; }
+.evt small{ display:block; font:400 10px var(--font-mono); color:var(--text-sub); margin-top:2px; }
+.evt.muted{ background:var(--card-sub); border-left-color:var(--card-border); color:var(--text-sub); font-weight:400; }
+.callout{ display:flex; gap:8px; align-items:flex-start; font-size:14px; color:var(--text); }
+.callout .i{ color:var(--tag-nxt); margin-top:2px; }
+
+/* search */
+.sfield{ height:48px; border-radius:var(--r-md); background:var(--card-sub); border:1px solid var(--card-border); display:flex; align-items:center; gap:10px; padding:0 14px; color:var(--text-soft); font-size:14.5px; min-width:0; }
+.sfield .q{ color:var(--text); flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.kbd{ font:500 11px var(--font-mono); padding:2px 6px; border-radius:6px; border:1px solid var(--card-border); color:var(--text-soft); background:var(--card); }
+.chips{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-size:12px; color:var(--text-soft); }
+.chip2{ height:26px; padding:0 10px; border-radius:var(--r-pill); border:1px solid var(--card-border); background:var(--card); display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--text-sub); white-space:nowrap; }
+.chip2 .i{ width:12px; height:12px; }
+.qcard{ border-radius:var(--r-md); background:var(--card-sub); padding:12px; display:grid; grid-template-columns:22px minmax(0,1fr); gap:10px; }
+.qhead{ display:flex; gap:8px; align-items:baseline; flex-wrap:wrap; }
+.qhead b{ font-size:13px; font-weight:600; }
+.qhead time{ font:400 11px var(--font-mono); color:var(--text-soft); }
+.qcard p{ font-size:14px; color:var(--text); margin-top:2px; }
+mark.m{ background:var(--primary-tint); color:var(--primary); border-radius:3px; padding:0 3px; font-weight:500; }
+.filechip{ display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:var(--r-sm); border:1px solid var(--card-border); background:var(--card); font-size:13px; color:var(--text); max-width:100%; justify-self:start; }
+.filechip .i{ color:var(--text-soft); }
+.filechip small{ font:400 11px var(--font-mono); color:var(--text-soft); }
+
+/* composer */
+.draft{ padding:16px; font:400 13.5px/1.75 var(--font-mono); color:var(--text-soft); }
+.aitag{ height:32px; padding:0 12px; border-radius:var(--r-pill); display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:550; color:var(--primary); background:var(--primary-tint); white-space:nowrap; }
+.aitag .i{ width:14px; height:14px; }
+.ctools{ margin-left:auto; display:flex; gap:2px; align-items:center; }
+.ctools > span{ width:32px; height:32px; display:grid; place-items:center; border-radius:var(--r-md); color:var(--text-soft); }
+.ctools .send{ background:var(--bubble); color:var(--on-bubble); }
+.ctools .i{ width:15px; height:15px; }
+.anno{ margin-top:16px; font-size:13.5px; line-height:1.55; color:var(--text-soft); }
+
+/* demo animation (the resting state is always the final state) */
+.demo.play .r1{ animation:rise var(--dur-slow) var(--ease-out) both; }
+.demo.play .r2{ animation:rise var(--dur-slow) var(--ease-out) .45s both; }
+.demo.play .r3{ animation:rise var(--dur-slow) var(--ease-out) 1.25s both; }
+.demo.play .r4{ animation:rise var(--dur-slow) var(--ease-out) 1.6s both; }
+.demo.play .hl{ animation:draw .7s var(--ease-out) .3s both; }
+.demo.play .stag > *{ animation:rise var(--dur-slow) var(--ease-out) 1.45s both; }
+.demo.play .stag > *:nth-child(2){ animation-delay:1.53s; } .demo.play .stag > *:nth-child(3){ animation-delay:1.61s; }
+.demo.play .stag > *:nth-child(4){ animation-delay:1.69s; } .demo.play .stag > *:nth-child(5){ animation-delay:1.77s; }
+.demo.play .drop{ animation:drop .6s var(--ease-out) 1.7s both; }
+.demo.play .typed{ animation:type 1.1s steps(44,end) both; }
+@keyframes rise{ from{ opacity:0; transform:translateY(12px); } to{ opacity:1; transform:none; } }
+@keyframes draw{ from{ background-size:0% 2px; } to{ background-size:100% 2px; } }
+@keyframes drop{ from{ opacity:0; transform:translateY(-14px) scale(.96); } to{ opacity:1; transform:none; } }
+@keyframes type{ from{ clip-path:inset(0 100% 0 0); } to{ clip-path:inset(0 0 0 0); } }
+.replay{ font:500 12px var(--font-mono); letter-spacing:.04em; color:var(--primary); background:none; border:0; cursor:pointer; padding:0 4px; display:inline-flex; align-items:center; gap:6px; min-height:44px; justify-self:start; text-transform:uppercase; }
+.replay .i{ width:13px; height:13px; }
+
+/* ---------- Page patterns ---------- */
+.hero{ text-align:center; padding:clamp(56px, 9vw, 112px) var(--gutter) 0; display:grid; justify-items:center; gap:20px; position:relative; }
+.hero::before{ content:""; position:absolute; left:50%; bottom:-40px; width:min(900px, 90%); height:420px; transform:translateX(-50%);
+  background:radial-gradient(closest-side, rgba(183,138,247,.28), transparent); pointer-events:none; }
+.hero > *{ position:relative; }
+.hero .lead{ max-width:34rem; margin-inline:auto; }
+.cta-row{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:12px; }
+/* hero app showcase, after nick-analysis: full-width product card framed by a brand texture with 20px radius */
+.frame{ width:100%; max-width:1120px; margin-top:44px; padding:14px; border-radius:var(--r-lg);
+  background:
+    repeating-linear-gradient(115deg, rgba(255,255,255,.035) 0 2px, transparent 2px 9px),
+    radial-gradient(80% 120% at 12% 0%, #8F5BE0 0%, transparent 58%),
+    radial-gradient(70% 110% at 92% 100%, #5E2BAA 0%, transparent 62%),
+    #1D1432; }
+@media (min-width:768px){ .frame{ padding:22px; } }
+.app{ display:grid; grid-template-columns:minmax(0,1fr); text-align:left; }
+@media (min-width:900px){ .app{ grid-template-columns:56px 180px minmax(0,1fr) 300px; } }
+.app .rail, .app .side{ display:none; }
+@media (min-width:900px){ .app .rail, .app .side{ display:grid; } }
+.rail{ border-right:1px solid var(--card-border); padding:14px 0; justify-items:center; align-content:start; gap:10px; }
+.rail .mk{ width:28px; height:21px; fill:var(--primary); margin-bottom:8px; }
+.rail span{ width:36px; height:36px; border-radius:var(--r-md); display:grid; place-items:center; color:var(--text-sub); }
+.rail span.on{ background:var(--bubble); color:var(--on-bubble); }
+.rail .i{ width:18px; height:18px; }
+.side{ border-right:1px solid var(--card-border); padding:14px 10px; gap:2px; align-content:start; background:var(--card-sub); }
+.side .grp{ font:500 11px var(--font-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--text-soft); padding:10px 10px 6px; }
+.side a{ display:flex; gap:8px; align-items:center; padding:8px 10px; border-radius:var(--r-sm); color:var(--text-sub); text-decoration:none; font-size:13.5px; font-weight:500; }
+.side a.on{ background:var(--card); color:var(--text); box-shadow:0 0 0 1px var(--card-border); }
+.side .i{ width:14px; height:14px; color:var(--text-soft); }
+.mainc{ min-width:0; display:grid; align-content:start; }
+.mainc .card-head{ padding:12px 16px; }
+.lm{ display:grid; grid-template-columns:32px minmax(0,1fr); gap:10px; padding:12px 16px; }
+.lm b{ font-size:13.5px; font-weight:600; }
+.lm time{ font:400 11px var(--font-mono); color:var(--text-soft); margin-left:6px; }
+.lm p{ font-size:14px; color:var(--text-sub); margin-top:2px; }
+.panel{ padding:14px; display:grid; gap:12px; align-content:start; border-top:1px solid var(--card-border); background:var(--card-sub); }
+@media (min-width:900px){ .panel{ border-top:0; border-left:1px solid var(--card-border); } }
+.panel .card-head{ padding:12px 14px; }
+.panel .card-body{ padding:14px; }
+.hero-wrap{ overflow:hidden; padding-bottom:48px; }
+
+.journey{ display:grid; }
+@media (min-width:768px){ .journey{ grid-template-columns:repeat(3,1fr); } }
+.beat{ padding:32px var(--gutter) 44px; display:grid; gap:12px; align-content:start; border-bottom:1px solid var(--rail); }
+.beat:last-child{ border-bottom:0; }
+@media (min-width:768px){ .beat{ border-bottom:0; border-right:1px solid var(--rail); padding:36px 36px 48px; } .beat:last-child{ border-right:0; } }
+.beat .line{ height:2px; background:var(--border); position:relative; margin-bottom:20px; overflow:hidden; }
+.beat .line::after{ content:""; position:absolute; inset:0; background:var(--primary); transform-origin:left; }
+.demo.play .beat .line::after{ animation:fill .48s var(--ease-out) both; }
+.demo.play .beat:nth-child(2) .line::after{ animation-delay:.48s; } .demo.play .beat:nth-child(3) .line::after{ animation-delay:.96s; }
+@keyframes fill{ from{ transform:scaleX(0); } to{ transform:scaleX(1); } }
+.beat h3{ font-size:var(--t-h3); line-height:1.2; letter-spacing:-.02em; }
+.beat p{ color:var(--text-sub); }
+
+/* feature cells, after nick-analysis "cell": visual zone on top, H3 24px + body below, 2x2 gapless grid on rails */
+.fgrid{ display:grid; border-top:1px solid var(--rail); }
+.fcell{ display:grid; grid-template-rows:auto 1fr; min-width:0; border-bottom:1px solid var(--rail); }
+.fcell:last-child{ border-bottom:0; }
+@media (min-width:1024px){
+  .fgrid{ grid-template-columns:1fr 1fr; }
+  .fcell{ border-bottom:0; }
+  .fcell:nth-child(odd){ border-right:1px solid var(--rail); }
+  .fcell:nth-child(n+3){ border-top:1px solid var(--rail); }
+}
+.fvis{ padding:36px var(--gutter) 8px; display:grid; align-content:center; min-height:440px; min-width:0; }
+.fvis > *{ width:100%; max-width:480px; margin-inline:auto; min-width:0; }
+.ftext{ padding:24px var(--gutter) 36px; display:grid; gap:12px; align-content:start; }
+@media (min-width:768px){ .fvis{ padding-inline:36px; } .ftext{ padding-inline:36px; } }
+.ftext h3{ font-size:24px; line-height:1.5; letter-spacing:-.02em; }
+.ftext p{ color:var(--text-sub); max-width:30rem; }
+.ftext .row-end{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+
+.pricing{ display:grid; border-top:1px solid var(--rail); }
+@media (min-width:1024px){ .pricing{ grid-template-columns:repeat(3,1fr); } }
+.plan{ padding:40px var(--gutter); display:flex; flex-direction:column; gap:20px; border-bottom:1px solid var(--rail); }
+@media (min-width:768px){ .plan{ padding:44px 36px; } }
+@media (min-width:1024px){ .plan{ border-bottom:0; border-right:1px solid var(--rail); } .plan:last-child{ border-right:0; } }
+.plan .top{ display:flex; align-items:center; gap:10px; min-height:34px; }
+.plan h3{ font-size:var(--t-h3); letter-spacing:-.02em; }
+.plan .price{ display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+.plan .price .u{ font-size:14px; color:var(--text-soft); }
+.plan ul{ list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+.plan li{ display:grid; grid-template-columns:18px 1fr; gap:10px; color:var(--text-sub); font-size:15.5px; line-height:1.5; }
+.plan li .i{ margin-top:3px; color:var(--primary); }
+.plan .btn{ margin-top:auto; width:100%; }
+.plan.featured{ background:#723AC5; color:#FFFFFF; }
+.plan.featured li, .plan.featured .price .u{ color:rgba(255,255,255,.88); }
+.plan.featured li .i{ color:#FFFFFF; }
+.plan.featured .badge{ height:24px; padding:0 10px; border-radius:var(--r-pill); background:rgba(255,255,255,.16); font-size:12px; font-weight:500; display:inline-flex; align-items:center; }
+.plan.featured :focus-visible{ box-shadow:0 0 0 2px #723AC5, 0 0 0 4px #FFFFFF; }
+@media (max-width:1023px){ .plan.featured{ order:-1; } }
+
+.closing{ text-align:center; display:grid; justify-items:center; gap:20px; padding:clamp(64px, 10vw, 120px) var(--gutter); background:var(--bg-tint); position:relative; overflow:hidden; border-top:1px solid var(--rail); }
+.closing::before{ content:""; position:absolute; inset:auto 0 -200px; height:400px; background:radial-gradient(closest-side, rgba(183,138,247,.30), transparent); pointer-events:none; }
+.closing > *{ position:relative; }
+.closing h2{ max-width:12ch; }
+.closing form{ width:100%; display:grid; justify-items:center; gap:10px; }
+
+.modal-demo{ position:relative; border-radius:var(--r-lg); overflow:hidden; background:rgba(18,11,32,.72); padding:28px; display:grid; place-items:center; min-height:260px; }
+.modal-demo .pnl{ width:100%; max-width:440px; border-radius:var(--r-lg); background:var(--bg); box-shadow:var(--shadow-pop); overflow:hidden; }
+.modal-demo .vid{ aspect-ratio:16/9; max-width:100%; background:radial-gradient(circle at 30% 40%, #5E2BAA, #120B20 70%); display:grid; place-items:center; }
+.modal-demo .vid span{ width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,.14); display:grid; place-items:center; color:#fff; box-shadow:0 0 0 1px rgba(255,255,255,.3); }
+.modal-demo .cap{ display:flex; justify-content:space-between; align-items:center; gap:12px; padding:10px 10px 10px 16px; font-size:14px; color:var(--text-sub); }
+
+.acc{ border-top:1px solid var(--border); }
+.acc-item{ border-bottom:1px solid var(--border); }
+.acc-item button{ width:100%; min-height:72px; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:0; cursor:pointer; text-align:left;
+  font:500 16px var(--font-sans); color:var(--text); padding:0 4px; }
+.acc-item button .i{ width:20px; height:20px; color:var(--text-soft); transition:transform var(--dur-base) var(--ease-out); }
+.acc-item button[aria-expanded="true"] .i{ transform:rotate(45deg); }
+.acc-item .pnl{ padding:0 4px 20px; color:var(--text-sub); max-width:40rem; }
+
+.foot-demo{ display:grid; gap:28px; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); }
+.foot-demo h4{ font:500 12px var(--font-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--text-soft); margin-bottom:8px; }
+.foot-demo a{ display:flex; align-items:center; min-height:40px; text-decoration:none; color:var(--text-sub); font-size:15px; }
+.foot-demo a:hover{ color:var(--text); }
+
+.logo-grid{ display:grid; border-top:1px solid var(--rail); }
+@media (min-width:768px){ .logo-grid{ grid-template-columns:repeat(3,1fr); } }
+.logo-tile{ padding:32px var(--gutter); display:grid; gap:16px; border-bottom:1px solid var(--rail); align-content:start; }
+.logo-tile:last-child{ border-bottom:0; }
+@media (min-width:768px){ .logo-tile{ border-bottom:0; border-right:1px solid var(--rail); padding:40px 36px; } .logo-tile:last-child{ border-right:0; } }
+.logo-stage{ height:140px; display:grid; place-items:center; padding:0 16px; }
+.logo-stage svg{ height:40px; width:auto; max-width:100%; }
+.favs{ display:flex; gap:14px; align-items:end; flex-wrap:wrap; }
+.favs svg{ fill:var(--logo-mark); }
+
+.rules{ display:grid; border-top:1px solid var(--rail); }
+@media (min-width:768px){ .rules{ grid-template-columns:1fr 1fr; } .rules > div:first-child{ border-right:1px solid var(--rail); } }
+.rules > div{ padding:40px var(--gutter); min-width:0; }
+@media (min-width:768px){ .rules > div{ padding:44px 36px; } }
+.rules h3{ font-size:20px; margin-bottom:18px; display:flex; align-items:center; gap:10px; letter-spacing:-.01em; }
+.rules ul{ list-style:none; padding:0; margin:0; display:grid; gap:14px; }
+.rules li{ display:grid; grid-template-columns:18px 1fr; gap:10px; color:var(--text-sub); font-size:15.5px; line-height:1.55; }
+.rules li .i{ margin-top:4px; }
+.rules .do .i{ color:var(--primary); } .rules .dont .i{ color:var(--error); }
+code.t{ font:400 .88em var(--font-mono); background:var(--bg-tint); padding:1px 6px; border-radius:5px; color:var(--text); }
+
+.page-foot{ padding:40px var(--gutter) 56px; display:flex; flex-wrap:wrap; gap:16px 32px; justify-content:space-between; align-items:center; border-top:1px solid var(--rail); color:var(--text-soft); font-size:14px; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ animation:none !important; transition:none !important; }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-hash" viewBox="0 0 24 24"><path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-replay" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+  <symbol id="i-reply" viewBox="0 0 24 24"><polyline points="9 17 4 12 9 7"/><path d="M20 18v-2a4 4 0 0 0-4-4H4"/></symbol>
+  <symbol id="i-smile" viewBox="0 0 24 24"><path d="M22 11v1a10 10 0 1 1-9-10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/><path d="M16 5h6"/><path d="M19 2v6"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></symbol>
+  <symbol id="i-at" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-undo" viewBox="0 0 24 24"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="logo-mark" viewBox="0 0 310 232"><path d="M142.031 0.479852C152.683 0.438468 195.761 -1.26746 202.691 2.01371C205.438 3.31501 207.572 6.84646 209.087 9.38928C218.073 24.4768 225.98 40.4405 234.313 55.9038L275.974 132.721L297.259 171.429C301.322 178.842 307.157 188.174 309.601 196.088C314.456 211.809 305.206 226.008 290.288 230.657C276.352 233.175 254.235 230.724 239.605 231.174C232.836 231.383 223.477 225.215 220.169 219.239C214.194 208.447 208.793 197.026 202.976 186.015L156.992 97.7399L134.23 54.7956C130.831 48.4053 122.82 35.502 121.631 29.1972C118.784 14.088 129.262 3.88912 142.031 0.479852Z"/><path d="M73.6344 89.7422C85.4767 89.1589 138.234 88.4672 145.742 91.3608C147.47 92.0262 148.764 92.8835 149.515 94.6729C150.637 97.3484 150.732 99.8268 149.643 102.515C147.428 107.98 144.215 113.36 141.485 118.612L123.878 152.209L100.455 197.259C96.2321 205.412 91.6639 215.015 86.6247 222.635C84.3169 226.124 78.6723 228.685 74.8336 230.333C65.0778 232.378 19.3097 231.924 7.17252 230.418C4.80038 229.839 1.00639 226.171 0.369358 224.013C-2.29437 214.984 10.1732 196.845 14.5923 188.778C23.3782 172.421 32.3065 156.141 41.3761 139.939L58.7922 108.12C63.2547 100.111 64.9392 93.52 73.6344 89.7422Z"/></symbol>
+  <symbol id="logo-full" viewBox="0 0 919 232">
+    <g style="fill:var(--logo-mark)"><path d="M142.031 0.479852C152.683 0.438468 195.761 -1.26746 202.691 2.01371C205.438 3.31501 207.572 6.84646 209.087 9.38928C218.073 24.4768 225.98 40.4405 234.313 55.9038L275.974 132.721L297.259 171.429C301.322 178.842 307.157 188.174 309.601 196.088C314.456 211.809 305.206 226.008 290.288 230.657C276.352 233.175 254.235 230.724 239.605 231.174C232.836 231.383 223.477 225.215 220.169 219.239C214.194 208.447 208.793 197.026 202.976 186.015L156.992 97.7399L134.23 54.7956C130.831 48.4053 122.82 35.502 121.631 29.1972C118.784 14.088 129.262 3.88912 142.031 0.479852Z"/><path d="M73.6344 89.7422C85.4767 89.1589 138.234 88.4672 145.742 91.3608C147.47 92.0262 148.764 92.8835 149.515 94.6729C150.637 97.3484 150.732 99.8268 149.643 102.515C147.428 107.98 144.215 113.36 141.485 118.612L123.878 152.209L100.455 197.259C96.2321 205.412 91.6639 215.015 86.6247 222.635C84.3169 226.124 78.6723 228.685 74.8336 230.333C65.0778 232.378 19.3097 231.924 7.17252 230.418C4.80038 229.839 1.00639 226.171 0.369358 224.013C-2.29437 214.984 10.1732 196.845 14.5923 188.778C23.3782 172.421 32.3065 156.141 41.3761 139.939L58.7922 108.12C63.2547 100.111 64.9392 93.52 73.6344 89.7422Z"/></g>
+    <g style="fill:var(--logo-text)"><path d="M415.879 41.4974C428.735 41.2669 450.613 40.8826 462.927 41.7392C469.324 58.3158 477.422 76.3698 484.416 92.8769L517.962 172.473C524.227 187.236 532.574 205.863 538.111 220.647C524.766 221.446 505.07 220.9 491.016 220.998C487.351 210.385 481.132 197.298 478.328 186.875L463.577 186.779L399.082 186.845C396.193 196.286 390.176 211.594 386.323 220.801C372.295 221.245 354.417 221.154 340.357 220.835C343.9 213.626 347.951 202.596 351.154 194.891L369.911 150.58C385.443 114.307 400.766 77.9464 415.879 41.4974ZM412.555 152.662L440.881 152.636L465.075 152.665C462.553 145.467 440.592 84.7018 438.378 82.2076C429.91 104.739 420.158 129.96 412.555 152.662Z"/><path d="M835.909 87.3098C855.696 87.9844 865.199 92.3494 879.575 105.669C879.549 100.191 879.752 95.2765 880.035 89.8007C892.375 89.5248 905.838 89.7245 918.25 89.6903C919.4 101.413 918.645 124.973 918.605 137.772L918.697 220.868C905.786 220.943 892.874 220.938 879.963 220.852C879.575 216.127 879.562 209.968 879.411 205.128C877.493 207.143 874.932 209.453 872.876 211.411C862.099 219.117 852.123 223.434 838.726 223.762C748.674 225.963 743.492 90.8537 835.909 87.3098ZM848.347 190.504C867.629 187.809 881.092 170.002 878.426 150.709C875.759 131.416 857.975 117.927 838.687 120.564C819.352 123.207 805.83 141.04 808.503 160.374C811.176 179.707 829.019 193.205 848.347 190.504Z"/><path d="M601.328 87.2658C628.235 84.8261 655.003 100.678 666.963 124.675C656.921 129.03 645.468 135.34 635.492 140.285C611.107 101.453 560.328 127.113 571.933 166.152C574.422 174.732 580.286 181.936 588.18 186.119C606.247 195.493 626.311 187.785 635.387 169.93C639.078 171.318 644.338 173.947 648.049 175.672C652.179 178.446 661.748 182.212 667.35 185.724C656.369 212.948 624.445 226.234 596.6 223.608C561.353 220.282 534.525 195.581 532.266 159.771C531.024 142.082 536.863 124.625 548.507 111.251C562.883 94.9658 580.135 88.613 601.328 87.2658Z"/><path d="M691.787 55.7087L727.415 55.6187C727.586 67.27 727.225 78.6231 727.658 90.3374C739.414 90.0582 751.688 90.25 763.477 90.2724C764.173 98.4336 763.451 114.165 763.28 122.699C751.977 122.672 738.77 122.94 727.626 122.293C727.619 132.967 726.141 171.11 728.722 179.099C729.878 182.667 732.105 185.851 735.533 187.538C743.427 191.424 755.301 188.094 763.149 185.346C763.273 193.519 763.227 201.809 763.241 209.993L763.155 217.299C745.134 226.303 717.86 226.887 702.19 212.369C687.315 198.585 690.132 178.377 689.942 160.059C689.811 147.522 690.159 134.948 689.712 122.415C682.455 122.624 675.198 122.614 667.941 122.387L667.902 90.4201L689.719 90.0871C690.113 79.8527 689.062 68.4774 690.08 58.2817C690.264 56.4773 690.632 56.4825 691.787 55.7087Z"/></g>
+  </symbol>
+</svg>
+
+<header class="site-head">
+  <div class="in">
+    <a href="#top" aria-label="Back to top"><svg class="logo" viewBox="0 0 919 232" role="img" aria-label="Acta"><use href="#logo-full"/></svg></a>
+    <nav class="navlinks" aria-label="Sections">
+      <a href="#color">Color</a><a href="#type">Type</a><a href="#foundations">Foundations</a><a href="#components">Components</a><a href="#features">Features</a><a href="#patterns">Page</a><a href="#rules">Rules</a>
+    </nav>
+    <span class="head-spacer"></span>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark theme"><svg class="i"><use href="#i-moon"/></svg></button>
+  </div>
+</header>
+
+<main class="ledger" id="top">
+
+  <!-- ============ OVERVIEW ============ -->
+  <section class="sec">
+    <div class="intro">
+      <span class="eyebrow">Acta design system · v1</span>
+      <h1 class="s-display" style="max-width:14ch">Quiet page. Glowing work.</h1>
+      <p class="lead">A white, ruled page where the only thing that glows is what Acta produced. Violet light marks every summary, detected task, answer and draft, so "works in the background" becomes something you can see.</p>
+    </div>
+    <div class="cells c3">
+      <div class="cell"><div class="cell-label"><span>Principle 1</span></div><h3 class="s-h3" style="font-size:22px">Violet means Acta did it.</h3><p class="s-body" style="margin-top:10px">The glow border and the sparkle appear on AI output only. Human messages are never violet.</p></div>
+      <div class="cell"><div class="cell-label"><span>Principle 2</span></div><h3 class="s-h3" style="font-size:22px">The page is a ledger. The product is a card.</h3><p class="s-body" style="margin-top:10px">Page structure is square, white and ruled with hairlines. Product mocks are white cards with 20px corners and a soft stacked shadow.</p></div>
+      <div class="cell"><div class="cell-label"><span>Principle 3</span></div><h3 class="s-h3" style="font-size:22px">Content is data.</h3><p class="s-body" style="margin-top:10px">Every string, list, price and link comes from <code class="t">content/site.json</code>. Components accept any length and any count.</p></div>
+    </div>
+    <div class="hatch"></div>
+  </section>
+
+  <!-- ============ COLOR ============ -->
+  <section class="sec" id="color">
+    <div class="intro">
+      <span class="eyebrow">01 Color</span>
+      <h2 class="h2">One hue, carefully spent.</h2>
+      <p class="lead">A monochrome violet scale with violet-tinted neutrals. The five swatches from the brand document are starred. Components use semantic tokens only, never the raw scale.</p>
+    </div>
+    <div class="cells">
+      <div class="cell">
+        <div class="cell-label"><span>Brand scale · primitives</span><span>★ brand doc swatch</span></div>
+        <div class="scale">
+          <div class="sw"><div class="chip" style="background:#FAF7FF"></div><div class="meta"><strong>violet-50</strong><span>#FAF7FF</span></div></div>
+          <div class="sw"><div class="chip" style="background:#F4EFFF"><b>★ TINT</b></div><div class="meta"><strong>violet-100</strong><span>#F4EFFF</span></div></div>
+          <div class="sw"><div class="chip" style="background:#E7DCFD"></div><div class="meta"><strong>violet-200</strong><span>#E7DCFD</span></div></div>
+          <div class="sw"><div class="chip" style="background:#D3BCFB"></div><div class="meta"><strong>violet-300</strong><span>#D3BCFB</span></div></div>
+          <div class="sw"><div class="chip" style="background:#B78AF7"><b>★ ACCENT</b></div><div class="meta"><strong>violet-400</strong><span>#B78AF7</span></div></div>
+          <div class="sw"><div class="chip" style="background:#8F5BE0"></div><div class="meta"><strong>violet-500</strong><span>#8F5BE0</span></div></div>
+          <div class="sw"><div class="chip" style="background:#723AC5"><b>★ PRIMARY</b></div><div class="meta"><strong>violet-600</strong><span>#723AC5</span></div></div>
+          <div class="sw"><div class="chip" style="background:#5E2BAA"></div><div class="meta"><strong>violet-700</strong><span>#5E2BAA</span></div></div>
+          <div class="sw"><div class="chip" style="background:#4E2290"></div><div class="meta"><strong>violet-800</strong><span>#4E2290</span></div></div>
+          <div class="sw"><div class="chip" style="background:#1D1432"><b>★ ELEVATED</b></div><div class="meta"><strong>violet-900</strong><span>#1D1432</span></div></div>
+          <div class="sw"><div class="chip" style="background:#120B20"><b>★ BASE</b></div><div class="meta"><strong>violet-950</strong><span>#120B20</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="cells c2">
+      <div class="cell">
+        <div class="cell-label"><span>Semantic tokens</span><span>light · dark</span></div>
+        <div class="tw"><table class="tok-table">
+          <thead><tr><th>Token</th><th>Light</th><th>Dark</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td><code>--color-bg</code></td><td><i class="dot" style="background:#FFFFFF"></i><code>#FFFFFF</code></td><td><i class="dot" style="background:#120B20"></i><code>#120B20</code></td><td>Page, cells</td></tr>
+            <tr><td><code>--color-bg-tint</code></td><td><i class="dot" style="background:#F4EFFF"></i><code>#F4EFFF</code></td><td><i class="dot" style="background:#1D1432"></i><code>#1D1432</code></td><td>Mock cells, CTA band</td></tr>
+            <tr><td><code>--color-text</code></td><td><i class="dot" style="background:#120B20"></i><code>#120B20</code></td><td><i class="dot" style="background:#F4EFFF"></i><code>#F4EFFF</code></td><td>Headlines</td></tr>
+            <tr><td><code>--color-text-sub</code></td><td><i class="dot" style="background:#4A4458"></i><code>#4A4458</code></td><td><i class="dot" style="background:#B8B0CC"></i><code>#B8B0CC</code></td><td>Body, nav</td></tr>
+            <tr><td><code>--color-text-soft</code></td><td><i class="dot" style="background:#6E6880"></i><code>#6E6880</code></td><td><i class="dot" style="background:#8D84A3"></i><code>#8D84A3</code></td><td>Micro-copy, meta</td></tr>
+            <tr><td><code>--color-primary</code></td><td><i class="dot" style="background:#723AC5"></i><code>#723AC5</code></td><td><i class="dot" style="background:#B78AF7"></i><code>#B78AF7</code></td><td>CTAs, links</td></tr>
+            <tr><td><code>--color-primary-hover</code></td><td><i class="dot" style="background:#5E2BAA"></i><code>#5E2BAA</code></td><td><i class="dot" style="background:#D3BCFB"></i><code>#D3BCFB</code></td><td>Hover</td></tr>
+            <tr><td><code>--color-border</code></td><td><i class="dot" style="background:#E7E1F2"></i><code>#E7E1F2</code></td><td><i class="dot" style="background:rgba(183,138,247,.14)"></i><code>violet 14%</code></td><td>Component borders</td></tr>
+            <tr><td><code>--color-rail</code></td><td><i class="dot" style="background:rgba(18,11,32,.07)"></i><code>ink 7%</code></td><td><i class="dot" style="background:rgba(183,138,247,.10)"></i><code>violet 10%</code></td><td>Ledger lines</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="cell">
+        <div class="cell-label"><span>Product cards + status</span><span>follow the theme</span></div>
+        <div style="display:grid; gap:14px">
+          <div class="row-wrap">
+            <span class="pair" style="background:var(--card); color:var(--text); box-shadow:var(--card-shadow)">card</span>
+            <span class="pair" style="background:var(--card-sub); color:var(--text-sub)">card-sub</span>
+            <span class="pair" style="background:var(--bubble); color:var(--on-bubble)">bubble</span>
+            <span class="pair" style="background:var(--card); color:var(--primary); box-shadow:var(--shadow-ai)">Acta ring</span>
+          </div>
+          <div class="row-wrap"><span class="mt dec">Decision</span><span class="mt blk">Blocker</span><span class="mt nxt">Next step</span></div>
+          <p class="note">Status colors appear only as micro-tags inside product cards and in forms. They are never decoration.</p>
+        </div>
+        <div class="cell-label" style="margin-top:28px"><span>Contrast · WCAG 2.2</span><span>18 of 18 pass</span></div>
+        <div class="tw"><table class="tok-table">
+          <tbody>
+            <tr><td><span class="pair" style="background:#723AC5;color:#fff">Try Acta free</span></td><td class="tnum">6.72 : 1</td><td><span class="pass">AA</span></td></tr>
+            <tr><td><span class="pair" style="background:#fff;color:#4A4458">Body text-sub</span></td><td class="tnum">9.30 : 1</td><td><span class="pass">AAA</span></td></tr>
+            <tr><td><span class="pair" style="background:#fff;color:#6E6880">Micro-copy soft</span></td><td class="tnum">5.31 : 1</td><td><span class="pass">AA</span></td></tr>
+            <tr><td><span class="pair" style="background:#F4EFFF;color:#723AC5">Tag on tint</span></td><td class="tnum">5.96 : 1</td><td><span class="pass">AA</span></td></tr>
+            <tr><td><span class="pair" style="background:#120B20;color:#B78AF7">Accent on base</span></td><td class="tnum">7.30 : 1</td><td><span class="pass">AAA</span></td></tr>
+            <tr><td><span class="pair" style="background:#1D1432;color:#B8B0CC">Mock sub-text</span></td><td class="tnum">8.44 : 1</td><td><span class="pass">AAA</span></td></tr>
+          </tbody>
+        </table></div>
+        <p class="note" style="margin-top:12px">Never set <code class="t">#B78AF7</code> as text on white. It drops to about 2.6 : 1.</p>
+      </div>
+    </div>
+    <div class="hatch"></div>
+  </section>
+
+  <!-- ============ TYPE ============ -->
+  <section class="sec" id="type">
+    <div class="intro">
+      <span class="eyebrow">02 Typography</span>
+      <h2 class="h2">Inter speaks. Roboto Mono labels.</h2>
+      <p class="lead">Both faces come from the brand document. Headlines stop at weight 600 with tight tracking. Mono is for labels, numbers and metadata, never for paragraphs.</p>
+    </div>
+    <div class="cells c2">
+      <div class="cell fam"><div class="cell-label"><span>Inter · 400 500 600</span><span>display, body, UI</span></div><div class="big">Aa</div><p class="chars">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 → ? ! &amp;</p></div>
+      <div class="cell fam"><div class="cell-label"><span>Roboto Mono · 400 500</span><span>eyebrows, steps, meta</span></div><div class="big m">01.</div><p class="chars mono">CATCH UP · AUTO-SYNC · RECALL · COMPOSE · TUE 5:00 PM · ⌘K</p></div>
+    </div>
+    <div class="cells"><div class="cell"><div class="spec">
+      <div class="spec-row"><div class="spec-meta"><b>display</b>clamp 40 → 72 / 600<br>lh 1.04 · −0.035em</div><div class="s-display">From conversation to execution.</div></div>
+      <div class="spec-row"><div class="spec-meta"><b>h2</b>clamp 32 → 52 / 600<br>lh 1.12 · −0.025em</div><div class="s-h2">Said in chat. Set in calendar.</div></div>
+      <div class="spec-row"><div class="spec-meta"><b>h3</b>clamp 22 → 28 / 600<br>lh 1.2 · −0.02em</div><div class="s-h3">Distill</div></div>
+      <div class="spec-row"><div class="spec-meta"><b>lead</b>20 / 400<br>lh 1.5 · −0.01em</div><div class="s-lead">Acta turns team chat into organized tasks and instant summaries. Completely in the background.</div></div>
+      <div class="spec-row"><div class="spec-meta"><b>body</b>16 / 400<br>lh 1.625 · max 34rem</div><div class="s-body">Step away for hours. Return to complete clarity. Acta synthesizes missed threads into the decisions that matter.</div></div>
+      <div class="spec-row"><div class="spec-meta"><b>ui</b>15 / 500<br>buttons, nav, inputs</div><div class="s-ui">Try Acta free</div></div>
+      <div class="spec-row"><div class="spec-meta"><b>price</b>48 / 600 · −0.03em<br>unit in small / soft</div><div><span class="s-price tnum">$16</span> <span class="s-small">/ user / month</span></div></div>
+      <div class="spec-row"><div class="spec-meta"><b>eyebrow</b>mono 12 / 500<br>+0.12em · uppercase</div><div><span class="eyebrow">Acta intelligence</span></div></div>
+      <div class="spec-row"><div class="spec-meta"><b>step</b>mono 14 / 500<br>+0.04em</div><div class="s-step">01. &nbsp; 02. &nbsp; 03.</div></div>
+      <div class="spec-row"><div class="spec-meta"><b>small</b>14 / 400</div><div class="s-small">Free for teams. Ready in seconds.</div></div>
+      <div class="spec-row"><div class="spec-meta"><b>micro</b>mono 11 / 400<br>inside mocks only</div><div class="s-micro">SEP 23 · 10:42 AM · 50 MESSAGES</div></div>
+    </div></div></div>
+    <div class="hatch"></div>
+  </section>
+
+  <!-- ============ FOUNDATIONS ============ -->
+  <section class="sec" id="foundations">
+    <div class="intro">
+      <span class="eyebrow">03 Foundations</span>
+      <h2 class="h2">Square page, round product.</h2>
+      <p class="lead">A 4px spacing grid, radius by context, and depth only where the product lives. The frame you are reading is the ledger itself: rails, full-bleed rules, plus-mark corners and hatch bands.</p>
+    </div>
+    <div class="cells c2">
+      <div class="cell">
+        <div class="cell-label"><span>Spacing · 4px base</span><span>px</span></div>
+        <div class="space-list">
+          <div class="space-row"><span>4</span><i style="width:4px"></i></div>
+          <div class="space-row"><span>8</span><i style="width:8px"></i></div>
+          <div class="space-row"><span>12</span><i style="width:12px"></i></div>
+          <div class="space-row"><span>16</span><i style="width:16px"></i></div>
+          <div class="space-row"><span>20</span><i style="width:20px"></i></div>
+          <div class="space-row"><span>24</span><i style="width:24px"></i></div>
+          <div class="space-row"><span>32</span><i style="width:32px"></i></div>
+          <div class="space-row"><span>40</span><i style="width:40px"></i></div>
+          <div class="space-row"><span>48</span><i style="width:48px"></i></div>
+          <div class="space-row"><span>64</span><i style="width:64px"></i></div>
+          <div class="space-row"><span>80</span><i style="width:80px"></i></div>
+          <div class="space-row"><span>96</span><i style="width:96px"></i></div>
+          <div class="space-row"><span>128</span><i style="width:128px"></i></div>
+        </div>
+        <p class="note" style="margin-top:18px">Section padding is 80 on mobile and 96 from 768. Eyebrow to headline 16, headline to body 20, body to CTA 32. Container 1240, gutter 20 or 36.</p>
+      </div>
+      <div class="cell">
+        <div class="cell-label"><span>Radius · by context</span></div>
+        <div class="rad-grid">
+          <div class="rad"><div style="border-radius:0"></div><span>0<br>page cells, pricing, bands</span></div>
+          <div class="rad"><div style="border-radius:8px"></div><span>8 · sm<br>mock tags, events</span></div>
+          <div class="rad"><div style="border-radius:12px"></div><span>12 · md<br>bubbles, mock fields</span></div>
+          <div class="rad"><div style="border-radius:20px"></div><span>20 · lg<br>product cards</span></div>
+          <div class="rad"><div style="border-radius:9999px"></div><span>pill<br>marketing controls</span></div>
+        </div>
+        <div class="cell-label" style="margin-top:32px"><span>Elevation</span></div>
+        <div class="elev-grid">
+          <div class="elev" style="background:var(--bg); color:var(--text-soft); box-shadow:inset 0 0 0 1px var(--rail); border-radius:0">L0 · ledger<br>rail lines, no shadow</div>
+          <div class="elev" style="background:var(--card); color:var(--text-sub); box-shadow:var(--card-shadow)">L2 · card-shadow<br>product cards</div>
+          <div class="elev" style="background:var(--card); color:var(--primary); box-shadow:var(--shadow-ai)">L3 · shadow-ai<br>Acta output only</div>
+          <div class="elev" style="background:var(--bg); color:var(--text-sub); box-shadow:var(--shadow-pop)">L4 · shadow-popover<br>menus, film modal</div>
+        </div>
+      </div>
+    </div>
+    <div class="cells">
+      <div class="cell" id="motionDemo">
+        <div class="cell-label"><span>Motion · tokens</span><button class="replay" type="button" data-replay="motionDemo"><svg class="i"><use href="#i-play"/></svg>Play</button></div>
+        <div style="display:grid; gap:22px">
+          <div class="motion-row" style="--d:120ms; --e:cubic-bezier(.16,1,.3,1)"><div class="mlabel"><span>dur-instant 120ms · press, toggle</span><span>ease-out</span></div><div class="track"><i></i></div></div>
+          <div class="motion-row" style="--d:180ms; --e:cubic-bezier(.16,1,.3,1)"><div class="mlabel"><span>dur-fast 180ms · hover, color</span><span>ease-out</span></div><div class="track"><i></i></div></div>
+          <div class="motion-row" style="--d:280ms; --e:cubic-bezier(.65,0,.35,1)"><div class="mlabel"><span>dur-base 280ms · accordion, menu, modal</span><span>ease-in-out</span></div><div class="track"><i></i></div></div>
+          <div class="motion-row" style="--d:480ms; --e:cubic-bezier(.16,1,.3,1)"><div class="mlabel"><span>dur-slow 480ms · section reveal, 60ms stagger</span><span>ease-out</span></div><div class="track"><i></i></div></div>
+        </div>
+        <p class="note" style="margin-top:18px">Animate transform and opacity only. Exits run at 70% of the enter duration. With reduced motion on, every mock shows its final state and nothing is hidden behind an animation.</p>
+      </div>
+    </div>
+    <div class="hatch"></div>
+  </section>
+
+  <!-- ============ COMPONENTS ============ -->
+  <section class="sec" id="components">
+    <div class="intro">
+      <span class="eyebrow">04 Components</span>
+      <h2 class="h2">Every state, on the record.</h2>
+      <p class="lead">Each interactive part defines default, hover, focus, active, disabled and loading. Touch targets are at least 44px and the focus ring is never removed.</p>
+    </div>
+    <div class="cells">
+      <div class="cell">
+        <div class="cell-label"><span>Button · primary</span><span>md 44 · lg 52 · pill</span></div>
+        <div class="state-grid">
+          <div class="state"><button class="btn btn-primary btn-lg" type="button">Try Acta free<svg class="i i-arrow"><use href="#i-arrow"/></svg></button><span>default · lg</span></div>
+          <div class="state"><button class="btn btn-primary btn-lg is-hover" type="button" tabindex="-1">Try Acta free<svg class="i i-arrow"><use href="#i-arrow"/></svg></button><span>hover</span></div>
+          <div class="state"><button class="btn btn-primary btn-lg is-focus" type="button" tabindex="-1">Try Acta free<svg class="i i-arrow"><use href="#i-arrow"/></svg></button><span>focus-visible</span></div>
+          <div class="state"><button class="btn btn-primary btn-lg is-active" type="button" tabindex="-1">Try Acta free<svg class="i i-arrow"><use href="#i-arrow"/></svg></button><span>active · 0.98</span></div>
+          <div class="state"><button class="btn btn-primary btn-lg" type="button" disabled>Try Acta free<svg class="i i-arrow"><use href="#i-arrow"/></svg></button><span>disabled</span></div>
+          <div class="state"><button class="btn btn-primary btn-lg is-loading" type="button" aria-busy="true" tabindex="-1">Try Acta free<span class="spin" aria-hidden="true"></span></button><span>loading</span></div>
+          <div class="state"><button class="btn btn-primary" type="button">Try Acta free</button><span>default · md</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="cells c2">
+      <div class="cell">
+        <div class="cell-label"><span>Button · secondary + ghost link</span></div>
+        <div class="state-grid">
+          <div class="state"><button class="btn btn-secondary btn-lg" type="button">Contact sales</button><span>secondary</span></div>
+          <div class="state"><button class="btn btn-secondary btn-lg is-hover" type="button" tabindex="-1">Contact sales</button><span>hover</span></div>
+          <div class="state"><button class="btn btn-ghost btn-lg" type="button">Watch the film<svg class="i i-arrow"><use href="#i-arrow"/></svg></button><span>ghost link</span></div>
+          <div class="state"><button class="btn btn-ghost btn-lg is-hover" type="button" tabindex="-1">Watch the film<svg class="i i-arrow"><use href="#i-arrow"/></svg></button><span>ghost hover</span></div>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="cell-label"><span>Eyebrow · tag · micro-tag · meta pill</span></div>
+        <div style="display:grid; gap:22px">
+          <div class="row-wrap"><span class="eyebrow">Catch up</span><span class="eyebrow">Auto-sync</span><span class="eyebrow">Recall</span><span class="eyebrow">Compose</span></div>
+          <div class="row-wrap"><span class="tag">Most popular</span><span class="tag"><svg class="i" style="width:14px;height:14px"><use href="#i-spark"/></svg>AI summary</span><span class="tag">Free for teams</span></div>
+          <div class="row-wrap"><span class="mt dec">Decision</span><span class="mt blk">Blocker</span><span class="mt nxt">Next step</span><span class="meta" style="margin-left:0">50 messages</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="cells c2">
+      <div class="cell">
+        <div class="cell-label"><span>Email capture · states</span><span>56 · pill</span></div>
+        <div style="display:grid; gap:24px">
+          <div class="field"><label for="em1">Work email</label><div class="email"><input id="em1" type="email" placeholder="you@company.com" autocomplete="email" inputmode="email"><button class="btn btn-primary" type="button">Get started free</button></div></div>
+          <div class="field"><label for="em2">Focus</label><div class="email is-focus"><input id="em2" type="email" value="maya@northwind.io" autocomplete="off"><button class="btn btn-primary" type="button" tabindex="-1">Get started free</button></div></div>
+          <div class="field"><label for="em3">Error</label><div class="email is-error"><input id="em3" type="email" value="maya@" aria-invalid="true" aria-describedby="em3e" autocomplete="off"><button class="btn btn-primary" type="button" tabindex="-1">Get started free</button></div><p class="msg err" id="em3e"><svg class="i"><use href="#i-alert"/></svg>Enter a full work email, like maya@northwind.io.</p></div>
+          <div class="field"><span style="font-size:14px; font-weight:500">Success</span><p class="msg ok"><svg class="i"><use href="#i-check"/></svg>Check your inbox. Your workspace link is on its way.</p></div>
+        </div>
+        <p class="note" style="margin-top:18px">A visible label, or a visually hidden one. The placeholder is never the only label. The error sits under the field. The form stacks full width below 480px.</p>
+      </div>
+      <div class="cell">
+        <div class="cell-label"><span>Film modal</span><span>focus trapped · Esc closes</span></div>
+        <div class="modal-demo">
+          <div class="pnl" role="img" aria-label="Preview of the film modal">
+            <div class="vid"><span><svg class="i i-fill" style="width:20px;height:20px"><use href="#i-play"/></svg></span></div>
+            <div class="cap"><span>Acta in 90 seconds · captions on</span><span class="icon-btn" style="width:36px;height:36px"><svg class="i"><use href="#i-x"/></svg></span></div>
+          </div>
+        </div>
+        <p class="note" style="margin-top:14px">If <code class="t">hero.secondaryCta.filmUrl</code> is empty, the "Watch the film" trigger is hidden. It never links to nothing.</p>
+        <div class="cell-label" style="margin-top:28px"><span>Accordion · optional FAQ</span><span>72 rows</span></div>
+        <div class="acc">
+          <div class="acc-item"><button type="button" aria-expanded="true" aria-controls="a1" id="a1b">Does Acta train on our messages?<svg class="i"><use href="#i-plus"/></svg></button><div class="pnl" id="a1" role="region" aria-labelledby="a1b">Enterprise plans run on dedicated private LLM instances with zero data training.</div></div>
+          <div class="acc-item"><button type="button" aria-expanded="false" aria-controls="a2" id="a2b">Which calendars does Acta sync with?<svg class="i"><use href="#i-plus"/></svg></button><div class="pnl" id="a2" role="region" aria-labelledby="a2b" hidden>Sample answer. Real FAQ content comes from <code class="t">faq.items</code>.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="cells">
+      <div class="cell" style="padding-bottom:0"><div class="cell-label" style="margin-bottom:0; padding-bottom:24px"><span>Logo usage</span><span>open decision: mark color</span></div></div>
+    </div>
+    <div class="logo-grid">
+      <div class="logo-tile"><div class="logo-stage" style="background:#FFFFFF; box-shadow:inset 0 0 0 1px rgba(18,11,32,.07)"><svg viewBox="0 0 919 232" role="img" aria-label="Acta logo, current file colors" style="--logo-mark:#622DDE; --logo-text:#333333"><use href="#logo-full"/></svg></div><p class="note"><b style="color:var(--text); font-weight:600">Current file</b> · mark #622DDE, wordmark #333333. The mark is off-palette.</p></div>
+      <div class="logo-tile"><div class="logo-stage" style="background:#FFFFFF; box-shadow:inset 0 0 0 1px rgba(18,11,32,.07)"><svg viewBox="0 0 919 232" role="img" aria-label="Acta logo, recommended colors" style="--logo-mark:#723AC5; --logo-text:#120B20"><use href="#logo-full"/></svg></div><p class="note"><b style="color:var(--text); font-weight:600">Recommended</b> · mark #723AC5, wordmark #120B20. One violet for the whole system.</p></div>
+      <div class="logo-tile"><div class="logo-stage" style="background:#120B20"><svg viewBox="0 0 919 232" role="img" aria-label="Acta logo on dark" style="--logo-mark:#FFFFFF; --logo-text:#FFFFFF"><use href="#logo-full"/></svg></div><div class="favs" aria-label="Mark at favicon sizes"><svg viewBox="0 0 310 232" width="16" height="12" aria-hidden="true"><use href="#logo-mark"/></svg><svg viewBox="0 0 310 232" width="24" height="18" aria-hidden="true"><use href="#logo-mark"/></svg><svg viewBox="0 0 310 232" width="32" height="24" aria-hidden="true"><use href="#logo-mark"/></svg><svg viewBox="0 0 310 232" width="48" height="36" aria-hidden="true"><use href="#logo-mark"/></svg><span class="note">16 · 24 · 32 · 48</span></div></div>
+    </div>
+    <div class="cells">
+      <div class="cell">
+        <div class="cell-label"><span>Footer · link groups</span><span>group label in mono</span></div>
+        <div class="foot-demo">
+          <div><h4>Product</h4><a href="#features">Features</a><a href="#patterns">Pricing</a></div>
+          <div><h4>Company</h4><a href="#top">About</a><a href="#top">Contact</a></div>
+          <div><h4>Legal</h4><a href="#top">Privacy</a><a href="#top">Terms</a></div>
+        </div>
+        <p class="note" style="margin-top:14px">Nav and footer links are not in the brand doc. Their labels stay "TBD" in content until approved.</p>
+      </div>
+    </div>
+    <div class="hatch"></div>
+  </section>
+
+  <!-- ============ FEATURE COMPONENTS ============ -->
+  <section class="sec" id="features">
+    <div class="intro">
+      <span class="eyebrow">05 Feature components</span>
+      <h2 class="h2">The product tells the story.</h2>
+      <p class="lead">Built from the getnick.ai analysis. White product cards with a soft stacked shadow, your messages in an ink bubble, Acta in a bordered bubble, and answers as inline widgets. Violet replaces Nick's blue and green.</p>
+    </div>
+    <div class="cells c2">
+      <div class="cell">
+        <div class="cell-label"><span>Chat bubbles · you and Acta</span><span>after Nick chat-bubble</span></div>
+        <div class="chat">
+          <div class="row me"><div><span class="who">Tomás Reyes</span><p class="bub">Pushed the onboarding flow to staging. <span class="mention">@Maya</span> can you check the copy before Thursday?</p></div><span class="av p2">TR</span></div>
+          <div class="row bot"><span class="bot-av"><svg class="i"><use href="#i-spark"/></svg></span><div><span class="who">Acta</span><p class="bub">Got it. I added "Review onboarding copy" for Maya, due Thursday.</p></div></div>
+          <div class="row bot"><span class="bot-av"><svg class="i"><use href="#i-spark"/></svg></span><div><span class="typing" aria-label="Acta is typing"><i></i><i></i><i></i></span></div></div>
+        </div>
+        <p class="anno">Your message: ink bubble on the right, 12px radius, 12px 16px padding, 14px/500 white, 32px avatar. Acta: bordered white bubble on the left, 15px sub text, 36px outline avatar with the violet sparkle. Three grey dots show Acta typing before it answers.</p>
+      </div>
+      <div class="cell">
+        <div class="cell-label"><span>Acta widget card</span><span>after Nick card-app</span></div>
+        <div class="card ai">
+          <div class="card-head"><svg class="i"><use href="#i-cal"/></svg><span class="card-title">Sprint Calendar</span><span class="meta"><svg class="i"><use href="#i-spark"/></svg>Auto-added</span></div>
+          <div class="card-body">
+            <div class="tool"><svg class="i"><use href="#i-msg"/></svg><span>Read 4 messages in #launch-q3</span><svg class="i ok"><use href="#i-ok"/></svg></div>
+            <div class="callout"><svg class="i"><use href="#i-check"/></svg><span>Review onboarding copy, owner Maya, due Thursday.</span></div>
+          </div>
+          <div class="card-foot"><span class="seg"><span class="on">Task</span><span>Thread</span></span><span class="foot-right"><span class="app-btn ghost"><svg class="i"><use href="#i-undo"/></svg>Undo</span><span class="app-btn">Open task<svg class="i"><use href="#i-arrow"/></svg></span></span></div>
+        </div>
+        <p class="anno">White card, 1px border, 20px radius. Header: 16px line icon, 15px title, pill meta tag on the right. Tool-call row with a check, like Nick's "1 tool call". Footer: Chat/Agent-style segmented pills and a pill action. Cards Acta produced get a faint violet ring instead of the neutral shadow.</p>
+      </div>
+    </div>
+
+    <div class="fgrid">
+      <!-- Feature 1 -->
+      <div class="fcell demo" id="f1">
+        <div class="fvis" aria-hidden="true">
+          <div class="chat">
+            <div class="row me r1"><div><p class="bub">What did I miss in #launch-q3?</p></div><span class="av p3">MK</span></div>
+            <div class="row bot r2"><span class="bot-av"><svg class="i"><use href="#i-spark"/></svg></span><div><p class="bub">Here is what changed since 9:02 AM.</p></div></div>
+            <div class="card ai r3">
+              <div class="card-head"><svg class="i"><use href="#i-spark"/></svg><span class="card-title">3 key updates while you were away</span><span class="meta">50 messages</span></div>
+              <div class="card-body">
+                <ul class="sum stag">
+                  <li><span class="mt dec">Decision</span><span>Launch moves to Oct 14. Design freeze is Friday.</span></li>
+                  <li><span class="mt blk">Blocker</span><span>Legal review of the pricing page is still pending.</span></li>
+                  <li><span class="mt nxt">Next step</span><span>Maya ships the onboarding email draft by Tuesday.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ftext">
+          <span class="eyebrow">Catch up</span>
+          <h3>Fifty messages. Three bullets.</h3>
+          <p>Step away for hours. Return to complete clarity. Acta synthesizes missed threads into the decisions that matter.</p>
+          <button class="replay" type="button" data-replay="f1"><svg class="i"><use href="#i-replay"/></svg>Replay demo</button>
+        </div>
+        <p class="sr-only">Demo: Maya asks what she missed. Acta answers with a three-point summary of fifty messages: a decision, a blocker and a next step.</p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="fcell demo" id="f2">
+        <div class="fvis" aria-hidden="true">
+          <div class="chat">
+            <div class="row me r1"><div><p class="bub">I'll have the marketing report done <span class="hl">by Tuesday</span>.</p></div><span class="av p3">MK</span></div>
+            <div class="card ai r2">
+              <div class="card-head"><svg class="i"><use href="#i-cal"/></svg><span class="card-title">Sprint Calendar</span><span class="meta">Tuesday</span></div>
+              <div class="card-body">
+                <div class="callout"><svg class="i"><use href="#i-check"/></svg><span>Task detected → Added to Sprint Calendar for Tuesday, 5:00 PM</span></div>
+                <div class="week">
+                  <div><span class="d">Mon</span><div class="evt muted">Standup<small>9:30</small></div></div>
+                  <div><span class="d now">Tue</span><div class="evt drop">Marketing report<small>5:00 PM</small></div></div>
+                  <div><span class="d">Wed</span></div>
+                  <div><span class="d">Thu</span><div class="evt muted">Design review<small>14:00</small></div></div>
+                  <div><span class="d">Fri</span></div>
+                </div>
+              </div>
+              <div class="card-foot"><span class="app-btn ghost"><svg class="i"><use href="#i-undo"/></svg>Undo</span><span class="foot-right"><span class="app-btn">Open task<svg class="i"><use href="#i-arrow"/></svg></span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ftext">
+          <span class="eyebrow">Auto-sync</span>
+          <h3>Said in chat. Set in calendar.</h3>
+          <p>Type "I'll have this done by Tuesday." Acta catches the deadline, assigns the owner, and schedules the task automatically.</p>
+          <button class="replay" type="button" data-replay="f2"><svg class="i"><use href="#i-replay"/></svg>Replay demo</button>
+        </div>
+        <p class="sr-only">Demo: Maya says the marketing report will be done by Tuesday. Acta underlines the deadline and places the task on Tuesday at 5 PM in the sprint calendar.</p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="fcell demo" id="f3">
+        <div class="fvis" aria-hidden="true">
+          <div class="chat">
+            <div class="card r1">
+              <div class="card-body">
+                <div class="sfield"><svg class="i"><use href="#i-search"/></svg><span class="q typed">What did Sarah say about the logo color last week?</span><span class="kbd">⌘K</span></div>
+                <div class="chips"><span>Understood as</span><span class="chip2"><svg class="i"><use href="#i-at"/></svg>Sarah Lindqvist</span><span class="chip2"><svg class="i"><use href="#i-cal"/></svg>Sep 21 to 27</span><span class="chip2">logo color</span></div>
+              </div>
+            </div>
+            <div class="card ai r3">
+              <div class="card-head"><svg class="i"><use href="#i-spark"/></svg><span class="card-title">Found in #brand</span><span class="meta">Sep 23</span></div>
+              <div class="card-body">
+                <div class="qcard"><span class="av sm p1">SL</span><div><div class="qhead"><b>Sarah Lindqvist</b><time>3:08 PM</time></div><p>Let's lock the mark to <mark class="m">#723AC5</mark> so it matches the palette.</p></div></div>
+                <span class="filechip"><svg class="i"><use href="#i-file"/></svg>acta-logo-v4.svg <small>12 KB</small></span>
+              </div>
+              <div class="card-foot"><span class="foot-right"><span class="app-btn">Jump to message<svg class="i"><use href="#i-arrow"/></svg></span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ftext">
+          <span class="eyebrow">Recall</span>
+          <h3>Ask naturally. Find instantly.</h3>
+          <p>No file names to remember. Just ask what Sarah decided last week. Acta brings up the exact message and file in one tap.</p>
+          <button class="replay" type="button" data-replay="f3"><svg class="i"><use href="#i-replay"/></svg>Replay demo</button>
+        </div>
+        <p class="sr-only">Demo: a plain-language search for what Sarah said about the logo color. Acta shows how it read the question, then returns her exact message and the linked logo file.</p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="fcell demo" id="f4">
+        <div class="fvis" aria-hidden="true">
+          <div class="chat">
+            <div class="card r1">
+              <div class="card-head"><svg class="i"><use href="#i-hash"/></svg><span class="card-title">Message #leadership</span><span class="seg" style="margin-left:auto"><span>Chat</span><span class="on">Acta</span></span></div>
+              <div class="draft">- q3 launch slipped 1wk<br>- pricing pg blocked on legal<br>- need 1 eng for onboarding</div>
+              <div class="card-foot"><span class="aitag"><svg class="i"><use href="#i-spark"/></svg>Format into executive summary</span><span class="ctools"><span><svg class="i"><use href="#i-at"/></svg></span><span><svg class="i"><use href="#i-clip"/></svg></span><span class="send"><svg class="i"><use href="#i-send"/></svg></span></span></div>
+            </div>
+            <div class="card ai r3">
+              <div class="card-head"><svg class="i"><use href="#i-spark"/></svg><span class="card-title">Q3 launch update</span><span class="meta">Only visible to you</span></div>
+              <div class="card-body"><p style="color:var(--text-sub)">Launch moves one week to Oct 14. The pricing page is waiting on legal review, and onboarding needs one more engineer to stay on schedule.</p></div>
+              <div class="card-foot"><span class="seg"><span class="on">EN</span><span>DE</span><span>JA</span></span><span class="foot-right"><span class="app-btn">Insert draft</span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ftext">
+          <span class="eyebrow">Compose</span>
+          <h3>Rough thoughts. Polished updates.</h3>
+          <p>Transform messy meeting scribbles into executive summaries or global team translations. Right inside the composer.</p>
+          <button class="replay" type="button" data-replay="f4"><svg class="i"><use href="#i-replay"/></svg>Replay demo</button>
+        </div>
+        <p class="sr-only">Demo: three rough bullet points become a polished executive summary after pressing Format into executive summary, with one-tap translation.</p>
+      </div>
+    </div>
+    <div class="cells">
+      <div class="cell">
+        <p class="note">Mapping from nick-analysis/design.md: <code class="t">card-app</code> becomes <code class="t">.card</code>, <code class="t">chat-bubble</code> becomes <code class="t">.row.me / .row.bot</code>, the feature <code class="t">cell</code> becomes <code class="t">.fcell</code> (visual on top, 24px H3 and body below, 2x2 on rails), in-mock micro-tags become <code class="t">.mt</code>, and the Chat/Agent pills become <code class="t">.seg</code>. All demo text lives in <code class="t">features[].mock</code>.</p>
+      </div>
+    </div>
+    <div class="hatch"></div>
+  </section>
+
+  <!-- ============ PAGE PATTERNS ============ -->
+  <section class="sec" id="patterns">
+    <div class="intro">
+      <span class="eyebrow">06 Page patterns</span>
+      <h2 class="h2">How the landing page assembles.</h2>
+      <p class="lead">Header, hero, journey, four features, pricing, closing CTA, footer. Hatch bands separate the major groups. The order comes from content, not code.</p>
+    </div>
+
+    <div class="cells"><div class="cell" style="padding-bottom:0; border-bottom:0"><div class="cell-label" style="margin-bottom:0"><span>Hero · centered, with workspace frame</span></div></div></div>
+    <div class="hero-wrap">
+      <div class="hero">
+        <span class="eyebrow">Acta intelligence</span>
+        <h2 class="s-display" style="max-width:12ch">From conversation to execution.</h2>
+        <p class="lead">Acta turns team chat into organized tasks and instant summaries. Completely in the background.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary btn-lg" href="#patterns">Try Acta free<svg class="i i-arrow"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost btn-lg" href="#components">Watch the film<svg class="i i-arrow"><use href="#i-arrow"/></svg></a>
+        </div>
+        <p class="s-small">Free for teams. Ready in seconds.</p>
+        <div class="frame" aria-hidden="true">
+          <div class="card app">
+            <div class="rail">
+              <svg class="mk" viewBox="0 0 310 232"><use href="#logo-mark"/></svg>
+              <span class="on"><svg class="i"><use href="#i-msg"/></svg></span>
+              <span><svg class="i"><use href="#i-cal"/></svg></span>
+              <span><svg class="i"><use href="#i-search"/></svg></span>
+            </div>
+            <div class="side">
+              <span class="grp">Channels</span>
+              <a class="on"><svg class="i"><use href="#i-hash"/></svg>launch-q3</a>
+              <a><svg class="i"><use href="#i-hash"/></svg>marketing</a>
+              <a><svg class="i"><use href="#i-hash"/></svg>brand</a>
+              <span class="grp">Acta</span>
+              <a><svg class="i"><use href="#i-cal"/></svg>Sprint calendar</a>
+              <a><svg class="i"><use href="#i-spark"/></svg>Ask Acta</a>
+            </div>
+            <div class="mainc">
+              <div class="card-head"><svg class="i"><use href="#i-hash"/></svg><span class="card-title">launch-q3</span><span class="meta">14 members</span></div>
+              <div class="lm"><span class="av p2">TR</span><div><b>Tomás Reyes</b><time>10:02 AM</time><p>Legal still has the pricing page. Can we move launch a week?</p></div></div>
+              <div class="lm"><span class="av p1">SL</span><div><b>Sarah Lindqvist</b><time>10:05 AM</time><p>Agreed. Let's say Oct 14 and freeze design on Friday.</p></div></div>
+              <div class="lm"><span class="av p3">MK</span><div><b>Maya Kowalski</b><time>10:07 AM</time><p>I'll have the onboarding email draft ready <span class="hl">by Tuesday</span>.</p></div></div>
+            </div>
+            <div class="panel">
+              <div class="card ai">
+                <div class="card-head"><svg class="i"><use href="#i-spark"/></svg><span class="card-title">While you were away</span></div>
+                <div class="card-body"><ul class="sum"><li><span class="mt dec">Decision</span><span>Launch moves to Oct 14.</span></li><li><span class="mt blk">Blocker</span><span>Pricing page is in legal.</span></li></ul></div>
+              </div>
+              <div class="card ai">
+                <div class="card-head"><svg class="i"><use href="#i-cal"/></svg><span class="card-title">Task added</span><span class="meta">Tue 5:00 PM</span></div>
+                <div class="card-body"><div class="callout"><svg class="i"><use href="#i-check"/></svg><span>Onboarding email draft, owner Maya.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cells demo" id="jr">
+      <div class="cell" style="padding-bottom:0; border-bottom:0"><div class="cell-label" style="margin-bottom:0"><span>Journey · three beats</span><button class="replay" type="button" data-replay="jr"><svg class="i"><use href="#i-replay"/></svg>Replay</button></div></div>
+      <div class="journey">
+        <div class="beat"><div class="line"></div><span class="s-step">01.</span><h3>Talk</h3><p>Chat like you always do. Share ideas, discuss updates, make commitments.</p></div>
+        <div class="beat"><div class="line"></div><span class="s-step">02.</span><h3>Distill</h3><p>Acta listens silently. Missed messages become bullets. Commitments become tasks.</p></div>
+        <div class="beat"><div class="line"></div><span class="s-step">03.</span><h3>Deliver</h3><p>Deadlines sync to calendars. Questions find instant answers. Work just happens.</p></div>
+      </div>
+    </div>
+
+    <div class="cells"><div class="cell" style="padding-bottom:24px; border-bottom:0"><div class="cell-label" style="margin-bottom:0"><span>Pricing · three columns, Pro featured</span><span>CTA labels TBD</span></div></div></div>
+    <div class="pricing">
+      <div class="plan">
+        <div class="top"><h3>Starter</h3></div>
+        <div class="price"><span class="s-price tnum">$0</span><span class="u">/ month</span></div>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg>Essential chat and collaboration</li>
+          <li><svg class="i"><use href="#i-check"/></svg>50 AI thread summaries / month</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Basic calendar commitment sync</li>
+        </ul>
+        <a class="btn btn-secondary btn-lg" href="#patterns">Start free</a>
+      </div>
+      <div class="plan featured">
+        <div class="top"><h3>Pro</h3><span class="badge">Most popular</span></div>
+        <div class="price"><span class="s-price tnum">$16</span><span class="u">/ user / month</span></div>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg>Unlimited AI thread summaries</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Full natural language semantic search</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Integrated drafting assistant</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Unlimited shared calendar integrations</li>
+        </ul>
+        <a class="btn btn-inverse btn-lg" href="#patterns">Start Pro trial</a>
+      </div>
+      <div class="plan">
+        <div class="top"><h3>Enterprise</h3></div>
+        <div class="price"><span class="s-price">Custom</span></div>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg>Dedicated private LLM instances (zero data training)</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Single Sign-On and advanced compliance (SOC2, HIPAA)</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Workflow and project connectors (Jira, Linear)</li>
+        </ul>
+        <a class="btn btn-secondary btn-lg" href="#patterns">Contact sales</a>
+      </div>
+    </div>
+
+    <div class="closing">
+      <span class="eyebrow">Closing CTA</span>
+      <h2 class="s-display">Work that moves itself.</h2>
+      <p class="lead">Join modern teams spending less time managing and more time making.</p>
+      <form id="closeForm" novalidate>
+        <label class="sr-only" for="closeEmail">Work email</label>
+        <div class="email" id="closeWrap"><input id="closeEmail" type="email" placeholder="Enter work email" autocomplete="email" inputmode="email"><button class="btn btn-primary" type="submit">Get started free<svg class="i i-arrow"><use href="#i-arrow"/></svg></button></div>
+        <p class="msg" id="closeMsg" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="hatch"></div>
+  </section>
+
+  <!-- ============ RULES ============ -->
+  <section class="sec" id="rules">
+    <div class="intro">
+      <span class="eyebrow">07 Rules</span>
+      <h2 class="h2">What keeps it Acta.</h2>
+    </div>
+    <div class="rules">
+      <div class="do">
+        <h3><svg class="i" style="color:var(--primary)"><use href="#i-check"/></svg>Do</h3>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Reserve the glow <code class="t">#B78AF7</code> and the sparkle for AI output only.</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Keep page structure square and flat. All depth and roundness lives inside product cards.</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Separate sections with full-bleed rail rules and 48px hatch bands, not color blocks.</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Fill with <code class="t">#723AC5</code> only for conversion CTAs and the featured plan.</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>Render every string from <code class="t">content/site.json</code>, with no copy in markup.</span></li>
+        </ul>
+      </div>
+      <div class="dont">
+        <h3><svg class="i" style="color:var(--error)"><use href="#i-x"/></svg>Don't</h3>
+        <ul>
+          <li><svg class="i"><use href="#i-x"/></svg><span>Add a second hue. No blue links and no green CTAs.</span></li>
+          <li><svg class="i"><use href="#i-x"/></svg><span>Use the accent as text on white. It fails contrast.</span></li>
+          <li><svg class="i"><use href="#i-x"/></svg><span>Set headlines above 600 or drop their negative tracking.</span></li>
+          <li><svg class="i"><use href="#i-x"/></svg><span>Ship touch targets under 44px or remove focus rings.</span></li>
+          <li><svg class="i"><use href="#i-x"/></svg><span>Hardcode counts like 3 bullets, 4 features or 3 plans. The content decides.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="hatch"></div>
+  </section>
+
+  <footer class="page-foot">
+    <svg class="logo" viewBox="0 0 919 232" role="img" aria-label="Acta"><use href="#logo-full"/></svg>
+    <span>Spec: design-system/acta/MASTER.md · tokens.css · design-a11y.md</span>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var root = document.documentElement, btn = document.getElementById('themeBtn');
+  function current(){ var t = root.getAttribute('data-theme'); if (t) return t; return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function label(){ btn.setAttribute('aria-label', current() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'); }
+  try { var saved = localStorage.getItem('acta-ds-theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  label();
+  btn.addEventListener('click', function(){
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('acta-ds-theme', next); } catch (e) {}
+    label();
+  });
+
+  function restart(t){ t.classList.remove('play'); void t.offsetWidth; t.classList.add('play'); }
+  function play(el){
+    if (!el) return;
+    if (el.id === 'motionDemo') {
+      el.querySelectorAll('.motion-row').forEach(function(r){
+        var tr = r.querySelector('.track'); r.style.setProperty('--w', Math.max(0, tr.clientWidth - 36) + 'px'); restart(r);
+      });
+      return;
+    }
+    restart(el);
+  }
+  document.querySelectorAll('[data-replay]').forEach(function(b){
+    b.addEventListener('click', function(){ play(document.getElementById(b.getAttribute('data-replay'))); });
+  });
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting) { play(en.target); io.unobserve(en.target); } });
+    }, { threshold: .35 });
+    document.querySelectorAll('.fcell.demo, #jr').forEach(function(el){ io.observe(el); });
+  }
+
+  document.querySelectorAll('.acc-item button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', String(!open));
+      document.getElementById(b.getAttribute('aria-controls')).hidden = open;
+    });
+  });
+
+  var form = document.getElementById('closeForm'), input = document.getElementById('closeEmail'),
+      wrap = document.getElementById('closeWrap'), msg = document.getElementById('closeMsg');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+    wrap.classList.toggle('is-error', !ok);
+    input.setAttribute('aria-invalid', String(!ok));
+    msg.className = 'msg ' + (ok ? 'ok' : 'err');
+    msg.textContent = ok ? 'Demo only: the signup confirmation appears here.' : 'Enter a full work email, like maya@northwind.io.';
+  });
+})();
+</script>

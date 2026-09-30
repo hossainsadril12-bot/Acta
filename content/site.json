@@ -1,0 +1,534 @@
+{
+  "meta": {
+    "title": "Acta: From conversation to execution",
+    "description": "Acta turns team chat into organized tasks and instant summaries. Completely in the background.",
+    "lang": "en"
+  },
+  "brand": {
+    "name": "Acta",
+    "logoAlt": "Acta"
+  },
+  "ui": {
+    "skipLink": "Skip to content",
+    "navLabel": "Main",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "footerNavLabel": "Footer",
+    "filmClose": "Close film"
+  },
+  "sections": [
+    "hero",
+    "showcase",
+    "journey",
+    "features",
+    "pricing",
+    "closing"
+  ],
+  "nav": {
+    "items": [
+      {
+        "label": "How it works",
+        "href": "#journey"
+      },
+      {
+        "label": "Features",
+        "href": "#features"
+      },
+      {
+        "label": "Pricing",
+        "href": "#pricing"
+      }
+    ],
+    "cta": {
+      "label": "Try Acta free",
+      "href": "#signup"
+    }
+  },
+  "hero": {
+    "eyebrow": "ACTA INTELLIGENCE",
+    "headline": "From conversation to execution.",
+    "body": "Acta turns team chat into organized tasks and instant summaries. Completely in the background.",
+    "primaryCta": {
+      "label": "Try Acta free",
+      "href": "#signup"
+    },
+    "secondaryCta": {
+      "label": "Watch the film →",
+      "filmUrl": ""
+    },
+    "backgroundVideo": {
+      "src": "/brand/Implement_animation_in_design_1080p_20260930192446.mp4",
+      "poster": "/brand/hero-ribbon-poster.jpg"
+    }
+  },
+  "showcase": {
+    "label": "Acta workspace preview",
+    "srSummary": "The Acta workspace: in #launch-q3 the team agrees to move launch to Oct 14. Acta replies by creating three tasks (update the pricing page copy, finalize launch assets, review the legal checklist), and its side panel summarises the decision and blocker and lists recent activity.",
+    "groups": [
+      {
+        "label": "Channels",
+        "items": [
+          {
+            "label": "launch-q3",
+            "icon": "hash",
+            "active": true
+          },
+          {
+            "label": "marketing",
+            "icon": "hash"
+          },
+          {
+            "label": "brand",
+            "icon": "hash"
+          }
+        ]
+      },
+      {
+        "label": "Acta",
+        "items": [
+          {
+            "label": "Sarah Lindqvist",
+            "person": {
+              "name": "Sarah Lindqvist",
+              "initials": "SL",
+              "tone": 1
+            }
+          },
+          {
+            "label": "Tomás Reyes",
+            "person": {
+              "name": "Tomás Reyes",
+              "initials": "TR",
+              "tone": 2
+            }
+          },
+          {
+            "label": "Design Team",
+            "icon": "team",
+            "muted": true
+          },
+          {
+            "label": "Product Team",
+            "icon": "team",
+            "muted": true
+          }
+        ]
+      }
+    ],
+    "channel": {
+      "name": "launch-q3",
+      "meta": "14 members"
+    },
+    "messages": [
+      {
+        "author": {
+          "name": "Tomás Reyes",
+          "initials": "TR",
+          "tone": 2
+        },
+        "time": "10:02 AM",
+        "text": "Legal still has the pricing page. Can we move launch a week?"
+      },
+      {
+        "author": {
+          "name": "Sarah Lindqvist",
+          "initials": "SL",
+          "tone": 1
+        },
+        "time": "10:05 AM",
+        "text": "Agreed. Let's say Oct 14 and freeze design on Friday."
+      },
+      {
+        "acta": true,
+        "time": "10:08 AM",
+        "tasks": {
+          "title": "Created 3 tasks",
+          "items": [
+            {
+              "title": "Update pricing page copy",
+              "tag": {
+                "label": "Marketing",
+                "tone": "primary"
+              },
+              "due": "Oct 14"
+            },
+            {
+              "title": "Finalize launch assets",
+              "tag": {
+                "label": "Design",
+                "tone": "success"
+              },
+              "due": "Oct 14"
+            },
+            {
+              "title": "Review legal checklist",
+              "tag": {
+                "label": "Legal",
+                "tone": "neutral"
+              },
+              "due": "Oct 14"
+            }
+          ]
+        }
+      },
+      {
+        "author": {
+          "name": "Tomás Reyes",
+          "initials": "TR",
+          "tone": 2
+        },
+        "time": "10:09 AM",
+        "text": "Looks good! 👍"
+      }
+    ],
+    "composer": {
+      "placeholder": "Message #launch-q3..."
+    },
+    "summary": {
+      "title": "While you were away",
+      "items": [
+        {
+          "kind": "decision",
+          "label": "Decision",
+          "text": "Launch moves to Oct 14."
+        },
+        {
+          "kind": "blocker",
+          "label": "Blocker",
+          "text": "Pricing page is in legal."
+        }
+      ]
+    },
+    "activity": {
+      "title": "Recent activity",
+      "items": [
+        {
+          "icon": "tasks",
+          "text": "3 new tasks created",
+          "time": "10:08 AM"
+        },
+        {
+          "icon": "file",
+          "text": "Pricing page updated",
+          "time": "Yesterday"
+        },
+        {
+          "icon": "image",
+          "text": "Design assets shared",
+          "time": "Yesterday"
+        },
+        {
+          "icon": "checklist",
+          "text": "Legal checklist assigned",
+          "time": "Yesterday"
+        }
+      ],
+      "action": "View all activity"
+    }
+  },
+  "journey": {
+    "label": "How Acta works",
+    "headline": "Chat. Acta takes it from there.",
+    "beats": [
+      {
+        "number": "01",
+        "title": "Talk",
+        "body": "Chat like you always do. Share ideas, discuss updates, make commitments.",
+        "icon": "chat",
+        "tag": "No new habits"
+      },
+      {
+        "number": "02",
+        "title": "Distill",
+        "body": "Acta listens silently. Missed messages become bullets. Commitments become tasks.",
+        "icon": "sparkle",
+        "tag": "Always in the background"
+      },
+      {
+        "number": "03",
+        "title": "Deliver",
+        "body": "Deadlines sync to calendars. Questions find instant answers. Work just happens.",
+        "icon": "calendar",
+        "tag": "Done on its own"
+      }
+    ]
+  },
+  "features": {
+    "label": "Features",
+    "headline": "Four jobs. Zero manual work.",
+    "items": [
+      {
+        "id": "catch-up",
+        "eyebrow": "CATCH UP",
+        "headline": "Fifty messages. Three bullets.",
+        "body": "Step away for hours. Return to complete clarity. Acta synthesizes missed threads into the decisions that matter.",
+        "mock": {
+          "type": "summary",
+          "srSummary": "Demo: Maya asks what she missed. Acta answers with a three-point summary of fifty messages: a decision, a blocker and a next step.",
+          "question": {
+            "author": {
+              "name": "Maya Kowalski",
+              "initials": "MK",
+              "tone": 3
+            },
+            "text": "What did I miss in #launch-q3?"
+          },
+          "reply": "Here is what changed since 9:02 AM.",
+          "card": {
+            "title": "3 key updates while you were away",
+            "meta": "50 messages"
+          },
+          "items": [
+            {
+              "kind": "decision",
+              "label": "Decision",
+              "text": "Launch moves to Oct 14. Design freeze is Friday."
+            },
+            {
+              "kind": "blocker",
+              "label": "Blocker",
+              "text": "Legal review of the pricing page is still pending."
+            },
+            {
+              "kind": "next",
+              "label": "Next step",
+              "text": "Maya ships the onboarding email draft by Tuesday."
+            }
+          ]
+        }
+      },
+      {
+        "id": "auto-sync",
+        "eyebrow": "AUTO-SYNC",
+        "headline": "Said in chat. Set in calendar.",
+        "body": "Type \"I'll have this done by Tuesday.\" Acta catches the deadline, assigns the owner, and schedules the task automatically.",
+        "mock": {
+          "type": "task",
+          "srSummary": "Demo: Maya says the marketing report will be done by Tuesday. Acta underlines the deadline and places the task on Tuesday at 5:00 PM in the sprint calendar.",
+          "message": {
+            "author": {
+              "name": "Maya Kowalski",
+              "initials": "MK",
+              "tone": 3
+            },
+            "text": "I'll have the marketing report done [[by Tuesday]]."
+          },
+          "card": {
+            "title": "Sprint Calendar",
+            "meta": "Tuesday"
+          },
+          "callout": "Task detected → Added to Sprint Calendar for Tuesday, 5:00 PM",
+          "days": [
+            {
+              "label": "Mon",
+              "events": [
+                {
+                  "title": "Standup",
+                  "time": "9:30"
+                }
+              ]
+            },
+            {
+              "label": "Tue",
+              "today": true,
+              "events": [
+                {
+                  "title": "Marketing report",
+                  "time": "5:00 PM",
+                  "isNew": true
+                }
+              ]
+            },
+            {
+              "label": "Wed",
+              "events": []
+            },
+            {
+              "label": "Thu",
+              "events": [
+                {
+                  "title": "Design review",
+                  "time": "14:00"
+                }
+              ]
+            },
+            {
+              "label": "Fri",
+              "events": []
+            }
+          ],
+          "undo": "Undo",
+          "open": "Open task"
+        }
+      },
+      {
+        "id": "recall",
+        "eyebrow": "RECALL",
+        "headline": "Ask naturally. Find instantly.",
+        "body": "No file names to remember. Just ask what Sarah decided last week. Acta brings up the exact message and file in one tap.",
+        "mock": {
+          "type": "search",
+          "srSummary": "Demo: a plain-language search for what Sarah said about the logo color. Acta shows how it read the question, then returns her exact message and the linked logo file.",
+          "placeholder": "Ask anything: decisions, dates, or files…",
+          "query": "What did Sarah say about the logo color last week?",
+          "shortcut": "⌘K",
+          "understoodLabel": "Understood as",
+          "chips": [
+            {
+              "icon": "person",
+              "label": "Sarah Lindqvist"
+            },
+            {
+              "icon": "date",
+              "label": "Sep 21 to 27"
+            },
+            {
+              "icon": "topic",
+              "label": "logo color"
+            }
+          ],
+          "result": {
+            "title": "Found in #brand",
+            "meta": "Sep 23",
+            "author": {
+              "name": "Sarah Lindqvist",
+              "initials": "SL",
+              "tone": 1
+            },
+            "time": "3:08 PM",
+            "text": "Let's lock the mark to [[#723AC5]] so it matches the palette."
+          },
+          "file": {
+            "name": "acta-logo-v4.svg",
+            "size": "12 KB"
+          },
+          "action": "Jump to message"
+        }
+      },
+      {
+        "id": "compose",
+        "eyebrow": "COMPOSE",
+        "headline": "Rough thoughts. Polished updates.",
+        "body": "Transform messy meeting scribbles into executive summaries or global team translations. Right inside the composer.",
+        "mock": {
+          "type": "compose",
+          "srSummary": "Demo: three rough bullet points become a polished executive summary after pressing Format into executive summary, with one-tap translation.",
+          "channel": "Message #leadership",
+          "modes": [
+            "Chat",
+            "Acta"
+          ],
+          "activeMode": 1,
+          "draft": [
+            "- q3 launch slipped 1wk",
+            "- pricing pg blocked on legal",
+            "- need 1 eng for onboarding"
+          ],
+          "action": "Format into executive summary",
+          "result": {
+            "title": "Q3 launch update",
+            "meta": "Only visible to you",
+            "body": "Launch moves one week to Oct 14. The pricing page is waiting on legal review, and onboarding needs one more engineer to stay on schedule."
+          },
+          "languages": [
+            "EN",
+            "DE",
+            "JA"
+          ],
+          "activeLanguage": 0,
+          "insert": "Insert draft"
+        }
+      }
+    ]
+  },
+  "pricing": {
+    "label": "Pricing",
+    "headline": "Start free. Grow with your team.",
+    "tiers": [
+      {
+        "id": "starter",
+        "name": "Starter",
+        "price": "$0",
+        "unit": "/ month",
+        "features": [
+          "Essential chat and collaboration",
+          "50 AI thread summaries / month",
+          "Basic calendar commitment sync"
+        ],
+        "cta": {
+          "label": "Try Acta free",
+          "href": "#signup"
+        },
+        "internalNote": "Top-of-funnel acquisition for students and small teams."
+      },
+      {
+        "id": "pro",
+        "name": "Pro",
+        "badge": "Most popular",
+        "price": "$16",
+        "unit": "/ user / month",
+        "features": [
+          "Unlimited AI thread summaries",
+          "Full natural language semantic search",
+          "Integrated drafting assistant",
+          "Unlimited shared calendar integrations"
+        ],
+        "cta": {
+          "label": "Choose Pro",
+          "href": "#signup"
+        },
+        "featured": true
+      },
+      {
+        "id": "enterprise",
+        "name": "Enterprise",
+        "price": "Custom pricing",
+        "features": [
+          "Dedicated private LLM instances (zero data training)",
+          "SSO and advanced compliance (SOC2, HIPAA)",
+          "Enterprise workflow and PM connectors (Jira, Linear)"
+        ],
+        "cta": {
+          "label": "Contact sales",
+          "href": "#contact"
+        }
+      }
+    ]
+  },
+  "closing": {
+    "label": "Get started",
+    "headline": "Work that moves itself.",
+    "body": "Join modern teams spending less time managing and more time making.",
+    "form": {
+      "action": "/api/signup",
+      "label": "Work email",
+      "placeholder": "you@company.com",
+      "submit": "Get started free",
+      "success": "You're on the list. Check your inbox.",
+      "error": "Enter a full work email, like maya@northwind.io.",
+      "failure": "Something went wrong. Please try again."
+    }
+  },
+  "footer": {
+    "groups": [
+      {
+        "label": "Product",
+        "links": [
+          {
+            "label": "How it works",
+            "href": "#journey"
+          },
+          {
+            "label": "Features",
+            "href": "#features"
+          },
+          {
+            "label": "Pricing",
+            "href": "#pricing"
+          }
+        ]
+      }
+    ],
+    "legal": "© 2026 Acta"
+  }
+}

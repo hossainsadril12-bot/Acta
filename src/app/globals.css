@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@import "../../design-system/acta/tokens.css";
+@import "../styles/components.css";
+
+/* Tailwind utilities point at the semantic tokens in design-system/acta/tokens.css.
+   `inline` makes each utility emit var(--token) directly, so light/dark values
+   always come from tokens.css. The default Tailwind palette and scales are
+   cleared so no off-system colour or size can be used. */
+@theme inline {
+  --color-*: initial;
+  --font-*: initial;
+  --text-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --spacing: 4px;
+
+  --color-bg: var(--color-bg);
+  --color-bg-tint: var(--color-bg-tint);
+  --color-bg-subtle: var(--color-bg-subtle);
+  --color-text: var(--color-text);
+  --color-text-sub: var(--color-text-sub);
+  --color-text-soft: var(--color-text-soft);
+  --color-text-on-primary: var(--color-text-on-primary);
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-active: var(--color-primary-active);
+  --color-primary-tint: var(--color-primary-tint);
+  --color-accent: var(--color-accent);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-rail: var(--color-rail);
+  --color-focus: var(--color-focus);
+  --color-card: var(--color-card);
+  --color-card-border: var(--color-card-border);
+  --color-card-sub: var(--color-card-sub);
+  --color-bubble: var(--color-bubble);
+  --color-on-bubble: var(--color-on-bubble);
+  --color-tag-decision: var(--color-tag-decision);
+  --color-tag-blocker: var(--color-tag-blocker);
+  --color-tag-next: var(--color-tag-next);
+  --color-ai-glow: var(--color-ai-glow);
+  --color-success: var(--color-success);
+  --color-error: var(--color-error);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --text-display: var(--text-display);
+  --text-h2: var(--text-h2);
+  --text-h3: var(--text-h3);
+  --text-lead: var(--text-lead);
+  --text-body: var(--text-body);
+  --text-ui: var(--text-ui);
+  --text-small: var(--text-small);
+  --text-eyebrow: var(--text-eyebrow);
+  --text-micro: var(--text-micro);
+  --text-price: var(--text-price);
+
+  --leading-display: var(--leading-display);
+  --leading-heading: var(--leading-heading);
+  --leading-body: var(--leading-body);
+  --leading-ui: var(--leading-ui);
+
+  --tracking-display: var(--tracking-display);
+  --tracking-heading: var(--tracking-heading);
+  --tracking-eyebrow: var(--tracking-eyebrow);
+
+  --radius-none: var(--radius-none);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-pill: var(--radius-pill);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-ai-glow: var(--shadow-ai-glow);
+  --shadow-popover: var(--shadow-popover);
+}
+
+@layer base {
+  html {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+    overflow-x: clip;
+  }
+  body {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    overflow-x: clip;
+  }
+  h1, h2, h3, h4 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  :focus-visible { outline: none; box-shadow: var(--ring-focus); border-radius: 6px; }
+  /* Browser surfaces carry the palette too. */
+  html { accent-color: var(--color-primary); caret-color: var(--color-primary); scrollbar-color: var(--color-border-strong) transparent; }
+  ::selection { background: var(--color-selection); color: var(--color-text); }
+  a { text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+}

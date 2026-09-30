@@ -1,0 +1,844 @@
+{
+  "color": {
+    "primary": {
+      "$value": "#0178FF",
+      "$type": "color",
+      "$description": "Brand + primary action",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "primary-dark": {
+      "$value": "#0169E0",
+      "$type": "color",
+      "$description": "Primary hover/pressed",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "medium"
+        }
+      }
+    },
+    "primary-light": {
+      "$value": "#389CFF",
+      "$type": "color",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "primary-alpha-10": {
+      "$value": "#0178FF1A",
+      "$type": "color",
+      "$description": "Tinted selected state",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "go": {
+      "$value": "#00A63E",
+      "$type": "color",
+      "$description": "Go / free / execute",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "success": {
+      "$value": "#00A544",
+      "$type": "color",
+      "$description": "Data semantics (YES/BUY, up-trend)",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "surface": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "Page and every cell",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "surface-weak": {
+      "$value": "#F4F4F5",
+      "$type": "color",
+      "$description": "Subtle fills",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "surface-strong": {
+      "$value": "#09090B",
+      "$type": "color",
+      "$description": "Inverted pill buttons",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "surface-ink-soft": {
+      "$value": "#18181B",
+      "$type": "color",
+      "$description": "User chat bubble, \"New Chat\" button",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "text-strong": {
+      "$value": "#09090B",
+      "$type": "color",
+      "$description": "Headlines, primary labels",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "text-sub": {
+      "$value": "#52525C",
+      "$type": "color",
+      "$description": "Body copy, nav",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "text-soft": {
+      "$value": "#9F9FA9",
+      "$type": "color",
+      "$description": "Tertiary / eyebrows",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "border": {
+      "$value": "#E4E4E7",
+      "$type": "color",
+      "$description": "Component borders",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "rail": {
+      "$value": "#0000000F",
+      "$type": "color",
+      "$description": "Ledger lines (6% black)",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "dark-surface": {
+      "$value": "#09090B",
+      "$type": "color",
+      "$description": "Page",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "dark-surface-weak": {
+      "$value": "#18181B",
+      "$type": "color",
+      "$description": "Cells / weak fill",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "dark-text-strong": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "Headlines",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    },
+    "dark-text-sub": {
+      "$value": "#9F9FA9",
+      "$type": "color",
+      "$description": "Body",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter",
+          "confidence": "high"
+        }
+      }
+    }
+  },
+  "typography": {
+    "font-family": {
+      "display": {
+        "$value": "duplet, sans-serif",
+        "$type": "fontFamily",
+        "$description": "Hero H1, 2 lines max",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "body": {
+        "$value": "Manrope, sans-serif",
+        "$type": "fontFamily",
+        "$description": "Section intros, cell descriptions",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      }
+    },
+    "font-size": {
+      "display": {
+        "$value": "54px",
+        "$type": "dimension",
+        "$description": "Hero H1, 2 lines max",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "heading-section": {
+        "$value": "40px",
+        "$type": "dimension",
+        "$description": "Section H2s, always ending with a full stop",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "heading-cell": {
+        "$value": "24px",
+        "$type": "dimension",
+        "$description": "Cell H3s (\"Say it, Nick trades it.\")",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "price": {
+        "$value": "40px",
+        "$type": "dimension",
+        "$description": "Pricing amounts; \"/month\" in 14px `text-sub` baseline-aligned",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter",
+            "confidence": "medium"
+          }
+        }
+      },
+      "body": {
+        "$value": "16px",
+        "$type": "dimension",
+        "$description": "Section intros, cell descriptions",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "body-ui": {
+        "$value": "15px",
+        "$type": "dimension",
+        "$description": "Inputs, mobile nav",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "label-nav": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "Nav links, \"Use cases\" row labels",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "label-button": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "All pill buttons",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "eyebrow": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "Footer column heads (PRODUCT / COMPANY / LEGAL)",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "micro-tag": {
+        "$value": "10px",
+        "$type": "dimension",
+        "$description": "In-mock tags (YES, BUY, START, PAPER)",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      }
+    },
+    "font-weight": {
+      "display": {
+        "$value": 600,
+        "$type": "fontWeight",
+        "$description": "Hero H1, 2 lines max",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "heading-section": {
+        "$value": 600,
+        "$type": "fontWeight",
+        "$description": "Section H2s, always ending with a full stop",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "heading-cell": {
+        "$value": 600,
+        "$type": "fontWeight",
+        "$description": "Cell H3s (\"Say it, Nick trades it.\")",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "price": {
+        "$value": 600,
+        "$type": "fontWeight",
+        "$description": "Pricing amounts; \"/month\" in 14px `text-sub` baseline-aligned",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter",
+            "confidence": "medium"
+          }
+        }
+      },
+      "body": {
+        "$value": 440,
+        "$type": "fontWeight",
+        "$description": "Section intros, cell descriptions",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "body-ui": {
+        "$value": 440,
+        "$type": "fontWeight",
+        "$description": "Inputs, mobile nav",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "label-nav": {
+        "$value": 550,
+        "$type": "fontWeight",
+        "$description": "Nav links, \"Use cases\" row labels",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "label-button": {
+        "$value": 600,
+        "$type": "fontWeight",
+        "$description": "All pill buttons",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "eyebrow": {
+        "$value": 550,
+        "$type": "fontWeight",
+        "$description": "Footer column heads (PRODUCT / COMPANY / LEGAL)",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "micro-tag": {
+        "$value": 600,
+        "$type": "fontWeight",
+        "$description": "In-mock tags (YES, BUY, START, PAPER)",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      }
+    },
+    "line-height": {
+      "display": {
+        "$value": 1.08,
+        "$type": "number",
+        "$description": "Hero H1, 2 lines max",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "heading-section": {
+        "$value": 1.25,
+        "$type": "number",
+        "$description": "Section H2s, always ending with a full stop",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "heading-cell": {
+        "$value": 1.5,
+        "$type": "number",
+        "$description": "Cell H3s (\"Say it, Nick trades it.\")",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "price": {
+        "$value": 1.1,
+        "$type": "number",
+        "$description": "Pricing amounts; \"/month\" in 14px `text-sub` baseline-aligned",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter",
+            "confidence": "medium"
+          }
+        }
+      },
+      "body": {
+        "$value": "26px",
+        "$type": "dimension",
+        "$description": "Section intros, cell descriptions",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "body-ui": {
+        "$value": 1.5,
+        "$type": "number",
+        "$description": "Inputs, mobile nav",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "label-nav": {
+        "$value": "21px",
+        "$type": "dimension",
+        "$description": "Nav links, \"Use cases\" row labels",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "label-button": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "All pill buttons",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      }
+    },
+    "letter-spacing": {
+      "display": {
+        "$value": "-0.5px",
+        "$type": "dimension",
+        "$description": "Hero H1, 2 lines max",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "heading-section": {
+        "$value": "-0.5px",
+        "$type": "dimension",
+        "$description": "Section H2s, always ending with a full stop",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "label-nav": {
+        "$value": "-0.35px",
+        "$type": "dimension",
+        "$description": "Nav links, \"Use cases\" row labels",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "eyebrow": {
+        "$value": "0.3px",
+        "$type": "dimension",
+        "$description": "Footer column heads (PRODUCT / COMPANY / LEGAL)",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      },
+      "micro-tag": {
+        "$value": "0.8px",
+        "$type": "dimension",
+        "$description": "In-mock tags (YES, BUY, START, PAPER)",
+        "$extensions": {
+          "anydesign": {
+            "source": "design.md frontmatter"
+          }
+        }
+      }
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "4": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "8": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "12": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "14": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "16": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "20": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "24": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "28": {
+      "$value": "28px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "32": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "36": {
+      "$value": "36px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "48": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "64": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "80": {
+      "$value": "80px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "container": {
+      "$value": "1240px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "gutter-mobile": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "gutter-desktop": {
+      "$value": "36px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "band-hatch": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    }
+  },
+  "radius": {
+    "sm": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "md": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "lg": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "pill": {
+      "$value": "9999px",
+      "$type": "dimension",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    }
+  },
+  "shadow": {
+    "card-app": {
+      "$value": "0 4px 8px rgba(41,41,41,.06), 0 2px 4px rgba(41,41,41,.04), 0 1px 2px rgba(41,41,41,.04), 0 0 0 1px rgba(41,41,41,.06), inset 0 -0.5px 0.5px rgba(41,41,41,.1), inset 0 -1px 0.5px rgba(0,0,0,.1)",
+      "$type": "shadow",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "popover": {
+      "$value": "0 20px 44px -10px #00000094, 0 0 0 1px #00000080",
+      "$type": "shadow",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "tooltip": {
+      "$value": "0 14px 28px 0 #00000080, 0 1px 2px 0 #00000059",
+      "$type": "shadow",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    }
+  },
+  "motion": {
+    "duration-default": {
+      "$value": "150ms",
+      "$type": "duration",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "ease-default": {
+      "$value": "cubic-bezier(.4,0,.2,1)",
+      "$type": "duration",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    },
+    "ease-out": {
+      "$value": "cubic-bezier(0,0,.2,1)",
+      "$type": "duration",
+      "$extensions": {
+        "anydesign": {
+          "source": "design.md frontmatter"
+        }
+      }
+    }
+  },
+  "$extensions": {
+    "anydesign": {
+      "source": "https://getnick.ai/",
+      "captured_at": "2026-09-30",
+      "method": "generated from design.md by scripts/build_tokens_json.py",
+      "spec": "W3C Design Tokens Community Group 2025.10"
+    }
+  }
+}
